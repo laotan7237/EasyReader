@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dl_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/include_app_bar_main"
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include
+        android:id="@+id/include_nav_header_main"
+        layout="@layout/nav_header_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start" />
+
+
+</android.support.v4.widget.DrawerLayout>

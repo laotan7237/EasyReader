@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorTheme">#ffce3d3a</color>
+    <color name="colorWhite">#ffffffff</color>
+
+    <!--item的水波纹颜色-->
+    <color name="itemBackground">#DD7D7D7D</color>
+    <!--水波纹或5.0以下选择器颜色-->
+    <color name="tabBackground">#777D7D7D</color>
+</resources>
