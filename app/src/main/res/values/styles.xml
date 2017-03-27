@@ -6,6 +6,17 @@
         <item name="colorPrimary">@color/colorTheme</item>
         <item name="colorPrimaryDark">@color/colorTheme</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        //沉浸状态栏
+        <item name="android:windowIsTranslucent">true</item>
+        //ActionBarDrawerToggle设置颜色
+        <item name="colorControlNormal">@android:color/white</item>
     </style>
 
+
+    <!--半透明的Acitivity用的，用于实现滑动关闭activity-->
+    <style name="HalfTranslucent" parent="AppTheme">
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
 </resources>

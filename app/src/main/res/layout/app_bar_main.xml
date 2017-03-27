@@ -33,6 +33,7 @@
                 android:src="@mipmap/titlebar_menu" />
         </FrameLayout>
             <RadioGroup
+                android:id="@+id/rg_home_viewpager_contorl"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -40,22 +41,22 @@
                 >
 
                 <RadioButton
-                    android:id="@+id/rb_title_gank"
+                    android:id="@+id/rb_home_pager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableTop="@drawable/titlebar_disco" />
+
+                <RadioButton
+                    android:id="@+id/rb_music_pager"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@null"
                     android:checked="true"
-                    android:drawableTop="@drawable/titlebar_disco" />
-
-                <RadioButton
-                    android:id="@+id/iv_title_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@null"
                     android:drawableTop="@drawable/titlebar_music" />
 
                 <RadioButton
-                    android:id="@+id/iv_title_dou"
+                    android:id="@+id/rb_friend_pager"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@null"

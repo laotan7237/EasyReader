@@ -5,17 +5,17 @@
 
     <item android:state_enabled="false">
         <shape>
-            <solid android:color="@color/colorWhite" />
+            <solid android:color="@color/colorPageBg" />
         </shape>
     </item>
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="@color/itemBackground" />
+            <solid android:color="@color/itemBackgroundWhite" />
         </shape>
     </item>
     <item android:state_pressed="false">
         <shape>
-            <solid android:color="@color/colorWhite" />
+            <solid android:color="@color/colorPageBg" />
         </shape>
     </item>
 

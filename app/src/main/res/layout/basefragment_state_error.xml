@@ -1,0 +1,22 @@
+<!--加载失败-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ll_error_refresh"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/img_err"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/load_err" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="加载失败,点击重试"
+        android:textSize="15sp" />
+</LinearLayout>

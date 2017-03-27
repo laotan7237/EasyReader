@@ -2,9 +2,11 @@ package com.laotan.easyreader.di.component;
 
 import android.app.Activity;
 
-import com.laotan.easyreader.MainActivity;
 import com.laotan.easyreader.di.module.ActivityModule;
 import com.laotan.easyreader.di.scope.ActivityScope;
+import com.laotan.easyreader.ui.activity.MainActivity;
+import com.laotan.easyreader.ui.activity.zhihu.ZhiHuDetailActivity;
+import com.laotan.easyreader.ui.activity.zhihu.ZhihuThemeActivity;
 
 import dagger.Component;
 
@@ -17,4 +19,6 @@ public interface ActivityComponent {
     Activity getActivity();
 
     void inject(MainActivity mainActivity);
+    void inject(ZhiHuDetailActivity zhiHuDetailActivity);
+    void inject(ZhihuThemeActivity zhihuThemeActivity);
 }

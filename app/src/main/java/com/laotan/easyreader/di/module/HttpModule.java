@@ -1,5 +1,8 @@
 package com.laotan.easyreader.di.module;
 
+import com.laotan.easyreader.di.qualifier.GankUrl;
+import com.laotan.easyreader.di.qualifier.ZhihuUrl;
+import com.laotan.easyreader.http.service.GankIoService;
 import com.laotan.easyreader.http.service.ZhiHuService;
 
 import java.util.concurrent.TimeUnit;
@@ -56,15 +59,28 @@ public class HttpModule {
 
     @Singleton
     @Provides
+    @ZhihuUrl
     Retrofit provideZhiHuRetrofit(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, ZhiHuService.HOST);
     }
 
     @Singleton
     @Provides
-    ZhiHuService provideZhihuService(Retrofit retrofit) {
+    ZhiHuService provideZhihuService(@ZhihuUrl Retrofit retrofit) {
         return retrofit.create(ZhiHuService.class);
     }
 
+    @Singleton
+    @Provides
+    @GankUrl
+    Retrofit provideGankIoRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, GankIoService.API_GANKIO);
+    }
+
+    @Singleton
+    @Provides
+    GankIoService provideGankIoService(@GankUrl Retrofit retrofit) {
+        return retrofit.create(GankIoService.class);
+    }
 
 }

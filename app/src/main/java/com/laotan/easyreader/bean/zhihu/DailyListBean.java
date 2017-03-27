@@ -1,4 +1,4 @@
-package com.laotan.easyreader.bean;
+package com.laotan.easyreader.bean.zhihu;
 
 import java.util.List;
 

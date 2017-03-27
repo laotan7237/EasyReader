@@ -2,10 +2,12 @@ package com.laotan.easyreader.app;
 
 import android.app.Application;
 
+import com.blankj.utilcode.utils.Utils;
 import com.laotan.easyreader.di.component.AppComponent;
 import com.laotan.easyreader.di.component.DaggerAppComponent;
 import com.laotan.easyreader.di.module.AppModule;
 import com.laotan.easyreader.di.module.HttpModule;
+
 
 
 /**
@@ -21,6 +23,7 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         instance = this;
+        Utils.init(this);//一个utils库的初始化 https://github.com/Blankj/AndroidUtilCode/blob/master/README-CN.md
     }
 
     public static AppComponent getAppComponent(){

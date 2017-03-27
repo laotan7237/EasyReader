@@ -24,4 +24,5 @@ public class ActivityModule {
     public Activity provideActivity() {
         return mActivity;
     }
+
 }

@@ -2,9 +2,9 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="@color/tabBackground">
     <item>
-        <color android:color="@color/colorWhite" />
+        <color android:color="@color/colorPageBg" />
     </item>
     <item>
-        <color android:color="@color/colorWhite" />
+        <color android:color="@color/colorPageBg" />
     </item>
 </ripple>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="detail_bottom_height">56dp</dimen>
+    <dimen name="detail_image_height">260dp</dimen>
+
+    <!--用来测电影详情页-->
+    <dimen name="new_home_header_size">325dp</dimen>
+
+
+    <dimen name="slide_shape_title_ng">310dp</dimen>
+
+    <!--电影详情图片的宽高-->
+    <dimen name="movie_detail_width">125dp</dimen>
+    <dimen name="movie_detail_height">165dp</dimen>
+    <!--评论头像大小-->
+    <dimen name="comment_face_size">42dp</dimen>
+    <dimen name="list_image_size">80dp</dimen>
+
+</resources>

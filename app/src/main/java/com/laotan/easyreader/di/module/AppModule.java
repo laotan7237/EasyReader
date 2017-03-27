@@ -1,8 +1,10 @@
 package com.laotan.easyreader.di.module;
 
 import com.laotan.easyreader.app.App;
-import com.laotan.easyreader.http.RetrofitUtils;
+import com.laotan.easyreader.http.service.GankIoService;
 import com.laotan.easyreader.http.service.ZhiHuService;
+import com.laotan.easyreader.http.utils.RetrofitGankIoUtils;
+import com.laotan.easyreader.http.utils.RetrofitZhiHuUtils;
 
 import javax.inject.Singleton;
 
@@ -29,7 +31,14 @@ public class AppModule {
 
     @Provides
     @Singleton
-    RetrofitUtils provideRetrofitHelper(ZhiHuService zhihuApiService) {
-        return new RetrofitUtils(zhihuApiService);
+    RetrofitZhiHuUtils provideRetrofitZhiHuUtils(ZhiHuService zhihuApiService) {
+        return new RetrofitZhiHuUtils(zhihuApiService);
     }
+
+    @Provides
+    @Singleton
+    RetrofitGankIoUtils provideRetrofitGankIoUtils(GankIoService gankIoService) {
+        return new RetrofitGankIoUtils(gankIoService);
+    }
+
 }
