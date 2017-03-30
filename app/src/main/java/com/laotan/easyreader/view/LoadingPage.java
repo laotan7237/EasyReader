@@ -74,7 +74,7 @@ public abstract class LoadingPage extends FrameLayout {
     private View createLoadingView() {
         loadingView = LayoutInflater.from(mContext).inflate(R.layout.basefragment_state_loading, null);
         img = (ImageView) loadingView.getRootView().findViewById(R.id.img_progress);
-        // 加载动画
+        // 加载动画 这边也可以直接用progressbar 可以看看topnews页下拉刷新就是只用用progressbar控制动画
         mAnimationDrawable = (AnimationDrawable) img.getDrawable();
         // 默认进入页面就开启动画
         if (!mAnimationDrawable.isRunning()) {

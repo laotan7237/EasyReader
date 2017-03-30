@@ -1,6 +1,5 @@
 package com.laotan.easyreader.adapter;
 
-import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,11 +28,9 @@ public class ZhiHuAdapter extends BaseMultiItemQuickAdapter<HomeListBean, BaseVi
      * @param data A new list is created out of this one to avoid mutable list
      * @param activity
      */
-    Activity mActivity;
 
     public ZhiHuAdapter(List<HomeListBean> data, FragmentActivity activity) {
         super(data);
-        mActivity = activity;
         addItemType(HomeListBean.TITLE, R.layout.item_zhihu_title);
         addItemType(HomeListBean.DAILY, R.layout.item_zhihu_daily);
         addItemType(HomeListBean.HOT, R.layout.item_zhihu_hot);

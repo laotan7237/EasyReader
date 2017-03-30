@@ -1,9 +1,13 @@
 package com.laotan.easyreader.di.module;
 
 import com.laotan.easyreader.app.App;
+import com.laotan.easyreader.http.service.DoubanService;
 import com.laotan.easyreader.http.service.GankIoService;
+import com.laotan.easyreader.http.service.TopNewsService;
 import com.laotan.easyreader.http.service.ZhiHuService;
+import com.laotan.easyreader.http.utils.RetrofitDouBanUtils;
 import com.laotan.easyreader.http.utils.RetrofitGankIoUtils;
+import com.laotan.easyreader.http.utils.RetrofitTopNewsUtils;
 import com.laotan.easyreader.http.utils.RetrofitZhiHuUtils;
 
 import javax.inject.Singleton;
@@ -41,4 +45,15 @@ public class AppModule {
         return new RetrofitGankIoUtils(gankIoService);
     }
 
+    @Provides
+    @Singleton
+    RetrofitTopNewsUtils provideRetrofitTopNewsUtils(TopNewsService topNewsService) {
+        return new RetrofitTopNewsUtils(topNewsService);
+    }
+
+    @Provides
+    @Singleton
+    RetrofitDouBanUtils provideRetrofitDouBanUtils(DoubanService doubanService) {
+        return new RetrofitDouBanUtils(doubanService);
+    }
 }

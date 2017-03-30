@@ -5,6 +5,8 @@ import android.app.Activity;
 import com.laotan.easyreader.di.module.ActivityModule;
 import com.laotan.easyreader.di.scope.ActivityScope;
 import com.laotan.easyreader.ui.activity.MainActivity;
+import com.laotan.easyreader.ui.activity.douban.MovieTopDetailActivity;
+import com.laotan.easyreader.ui.activity.topnews.TopNewsActivity;
 import com.laotan.easyreader.ui.activity.zhihu.ZhiHuDetailActivity;
 import com.laotan.easyreader.ui.activity.zhihu.ZhihuThemeActivity;
 
@@ -21,4 +23,6 @@ public interface ActivityComponent {
     void inject(MainActivity mainActivity);
     void inject(ZhiHuDetailActivity zhiHuDetailActivity);
     void inject(ZhihuThemeActivity zhihuThemeActivity);
+    void inject(TopNewsActivity topNewsActivity);
+    void inject(MovieTopDetailActivity movieTopDetailActivity);
 }

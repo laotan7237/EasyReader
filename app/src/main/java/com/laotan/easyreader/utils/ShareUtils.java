@@ -8,7 +8,7 @@ import android.net.Uri;
  * Created by quantan.liu on 2017/3/24.
  */
 
-public class ShareUtil {
+public class ShareUtils {
     private static final String EMAIL_ADDRESS = "502325525@qq.com";
 
     public static void shareText(Context context, String text, String title){

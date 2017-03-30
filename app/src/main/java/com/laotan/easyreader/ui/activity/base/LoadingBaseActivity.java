@@ -22,6 +22,7 @@ public abstract class LoadingBaseActivity<T extends BasePresenter> extends BaseA
     @Inject
     protected T mPresenter;
     private Unbinder bind;
+    protected FrameLayout flBaseContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public abstract class LoadingBaseActivity<T extends BasePresenter> extends BaseA
         initUI();
         initInject();
         mPresenter.setLifeSubscription(this);
-        FrameLayout flBaseContent = (FrameLayout) findViewById(setFrameLayoutId());
+        flBaseContent = (FrameLayout) findViewById(setFrameLayoutId());
         if (mLoadingPage == null) {
             mLoadingPage = new LoadingPage(this) {
                 @Override

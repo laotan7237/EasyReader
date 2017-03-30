@@ -1,8 +1,12 @@
 package com.laotan.easyreader.di.module;
 
+import com.laotan.easyreader.di.qualifier.DoubanUrl;
 import com.laotan.easyreader.di.qualifier.GankUrl;
+import com.laotan.easyreader.di.qualifier.TopNewsUrl;
 import com.laotan.easyreader.di.qualifier.ZhihuUrl;
+import com.laotan.easyreader.http.service.DoubanService;
 import com.laotan.easyreader.http.service.GankIoService;
+import com.laotan.easyreader.http.service.TopNewsService;
 import com.laotan.easyreader.http.service.ZhiHuService;
 
 import java.util.concurrent.TimeUnit;
@@ -83,4 +87,31 @@ public class HttpModule {
         return retrofit.create(GankIoService.class);
     }
 
+
+    @Singleton
+    @Provides
+    @TopNewsUrl
+    Retrofit provideTopNewsRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, TopNewsService.API_TOPNEWS);
+    }
+
+    @Singleton
+    @Provides
+    TopNewsService provideTopNewsService(@TopNewsUrl Retrofit retrofit) {
+        return retrofit.create(TopNewsService.class);
+    }
+
+
+    @Singleton
+    @Provides
+    @DoubanUrl
+    Retrofit provideDoubanRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, DoubanService.API_DOUBAN);
+    }
+
+    @Singleton
+    @Provides
+    DoubanService provideDoubanService(@DoubanUrl Retrofit retrofit) {
+        return retrofit.create(DoubanService.class);
+    }
 }

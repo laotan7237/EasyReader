@@ -16,4 +16,9 @@
     <dimen name="comment_face_size">42dp</dimen>
     <dimen name="list_image_size">80dp</dimen>
 
+    <dimen name="top_news_image">180dp</dimen>
+    <dimen name="movie_top_image">120dp</dimen>
+    <dimen name="top_news_text">160dp</dimen>
+    <dimen name="movie_top_text">100dp</dimen>
+
 </resources>

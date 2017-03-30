@@ -1,6 +1,7 @@
 package com.laotan.easyreader.ui.activity.zhihu;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -16,7 +17,7 @@ import com.laotan.easyreader.presenter.impl.ZhiHuDetailPresenterImpl;
 import com.laotan.easyreader.ui.activity.base.ZhihuDetailBaseActivity;
 import com.laotan.easyreader.utils.GlideUtils;
 import com.laotan.easyreader.utils.HtmlUtil;
-import com.laotan.easyreader.utils.ShareUtil;
+import com.laotan.easyreader.utils.ShareUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -51,6 +52,11 @@ public class ZhiHuDetailActivity extends ZhihuDetailBaseActivity<ZhiHuDetailPres
     @Override
     protected void initInject() {
         getActivityComponent().inject(this);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -127,7 +133,7 @@ public class ZhiHuDetailActivity extends ZhihuDetailBaseActivity<ZhiHuDetailPres
 
     @OnClick(R.id.tv_detail_bottom_share)
     void shareUrl() {
-        ShareUtil.shareText(this, shareUrl, "分享一篇文章");
+        ShareUtils.shareText(this, shareUrl, "分享一篇文章");
     }
 
     @OnClick(R.id.tv_detail_bottom_comment)

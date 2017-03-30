@@ -15,7 +15,7 @@ import com.laotan.easyreader.adapter.HomeFragmentPageAdapter;
 import com.laotan.easyreader.ui.fragment.home.child.DouBanMovieLatestFragment;
 import com.laotan.easyreader.ui.fragment.home.child.DouBanMovieTopFragment;
 import com.laotan.easyreader.ui.fragment.home.child.zhihu.ZhiHuHomeFragment;
-import com.laotan.easyreader.ui.fragment.home.child.WelfareFragment;
+import com.laotan.easyreader.ui.fragment.home.child.TopNewsFragment;
 
 import java.util.ArrayList;
 
@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
         mTitleList.add("排行榜");
         mTitleList.add("最新电影");
         mFragments.add(new ZhiHuHomeFragment());
-        mFragments.add(new WelfareFragment());
+        mFragments.add(new TopNewsFragment());
         mFragments.add(new DouBanMovieTopFragment());
         mFragments.add(new DouBanMovieLatestFragment());
     }

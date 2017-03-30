@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.laotan.easyreader.R;
-import com.laotan.easyreader.http.Stateful;
 import com.laotan.easyreader.presenter.BasePresenter;
 
 /**
@@ -13,7 +12,7 @@ import com.laotan.easyreader.presenter.BasePresenter;
  * 只要是头部和这个一样的都可以用这个Activity,底下可以自己定义。
  */
 
-public abstract class ZhihuDetailBaseActivity<T extends BasePresenter> extends LoadingBaseActivity<T> implements Stateful {
+public abstract class ZhihuDetailBaseActivity<T extends BasePresenter> extends LoadingBaseActivity<T>{
 
     @Override
     protected int getLayoutId() {

@@ -61,7 +61,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
                 @Override
                 protected void loadData() {
-                    BaseFragment.this.loadBaseData();
+                    BaseFragment.this.loadData();
                 }
 
                 @Override

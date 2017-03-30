@@ -6,4 +6,9 @@
     <string name="detail_bottom_commit">评论</string>
     <string name="comment_expand">收起</string>
 
+    <string name="actionbar_webview_share">分享到</string>
+    <string name="actionbar_webview_cope">复制链接</string>
+    <string name="actionbar_webview_open">打开链接</string>
+    <string name="action_share">分享</string>
+
 </resources>

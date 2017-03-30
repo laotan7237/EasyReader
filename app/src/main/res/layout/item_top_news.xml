@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_item_top_news"
+        android:scaleType="fitXY"
+        android:layout_width="@dimen/top_news_image"
+        android:layout_height="@dimen/top_news_image"
+        android:background="@mipmap/img_one_bi_one" />
+
+    <TextView
+        android:id="@+id/tv_item_top_news"
+        android:layout_width="@dimen/top_news_text"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:lines="2"
+        android:maxLines="2"
+        android:text="华语 | 多想牵你的手，走到尽头"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/sp_12" />
+</LinearLayout>

@@ -9,14 +9,46 @@
 
         //沉浸状态栏
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>//可以让appbarlayout从最顶上开始，状态栏会覆盖toolbar
+
         //ActionBarDrawerToggle设置颜色
         <item name="colorControlNormal">@android:color/white</item>
+    </style>
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">false</item>
     </style>
 
 
     <!--半透明的Acitivity用的，用于实现滑动关闭activity-->
     <style name="HalfTranslucent" parent="AppTheme">
-        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowBackground">@color/halfTranslucent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
+    <style name="windowTranslucentMovieTop" parent="HalfTranslucent">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+    <!--titleBar样式-->
+    <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="actionBarItemBackground">@drawable/toolbarItemBackground</item>
+        <item name="selectableItemBackground">@drawable/toolbarItemBackground</item>
+        <item name="titleTextAppearance">@style/ToolBar.Title</item>
+        <item name="subtitleTextAppearance">@style/Toolbar.SubTitle</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="android:textSize">18sp</item> &lt;!&ndash;  搞掂字体大小&ndash;&gt;-->
+    </style>
+
+    <!--titlebar 标题-->
+    <style name="ToolBar.Title" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <!--titlebar 副标题-->
+    <style name="Toolbar.SubTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">9.0sp</item>
+        <item name="android:textColor">#99ffffff</item>
     </style>
 </resources>

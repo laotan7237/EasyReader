@@ -4,8 +4,11 @@ import android.app.Activity;
 
 import com.laotan.easyreader.di.module.FragmentModule;
 import com.laotan.easyreader.di.scope.FragmentScope;
-import com.laotan.easyreader.ui.fragment.home.child.zhihu.ZhiHuHomeFragment;
+import com.laotan.easyreader.ui.fragment.home.child.DouBanMovieLatestFragment;
+import com.laotan.easyreader.ui.fragment.home.child.DouBanMovieTopFragment;
+import com.laotan.easyreader.ui.fragment.home.child.TopNewsFragment;
 import com.laotan.easyreader.ui.fragment.home.child.zhihu.ZhiHuCommentFragment;
+import com.laotan.easyreader.ui.fragment.home.child.zhihu.ZhiHuHomeFragment;
 
 import dagger.Component;
 
@@ -22,5 +25,11 @@ public interface FragmentComponent {
     void inject(ZhiHuHomeFragment zhiHuFragment);
 
     void inject(ZhiHuCommentFragment zhiHuCommentFragment);
+
+    void inject(TopNewsFragment topNewsFragment);
+
+    void inject(DouBanMovieTopFragment douBanMovieTopFragment);
+
+    void inject(DouBanMovieLatestFragment douBanMovieLatestFragment);
 
 }

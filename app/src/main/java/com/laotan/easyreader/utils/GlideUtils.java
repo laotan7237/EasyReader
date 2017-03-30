@@ -7,6 +7,7 @@ import com.blankj.utilcode.utils.Utils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.laotan.easyreader.R;
+import com.laotan.easyreader.webview.CommonUtils;
 
 /**
  * Created by quantan.liu on 2017/3/23.
@@ -15,7 +16,6 @@ import com.laotan.easyreader.R;
 public class GlideUtils {
     /**
      * 首页zhihu item读取图片
-     *
      * @param imgNumber 图片大小1最大 2中等 3最小正方形的
      * @param url
      * @param image
@@ -24,7 +24,6 @@ public class GlideUtils {
         Glide.with(Utils.getContext())
                 .load(url)
                 .crossFade(1500)
-                .placeholder(getDefaultPic(imgNumber))
                 .error(getDefaultPic(imgNumber))
                 .into(image);
     }
@@ -37,6 +36,8 @@ public class GlideUtils {
                 return R.mipmap.img_four_bi_three;
             case 3:
                 return R.mipmap.img_one_bi_one;
+            case 4:
+                return R.mipmap.img_default_movie;
         }
         return R.mipmap.img_four_bi_three;
     }
@@ -45,5 +46,21 @@ public class GlideUtils {
         Glide.with(mContext).load(url).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(iv);
     }
 
+    public static void loadMovieTopImg(ImageView imageView, String url) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .crossFade(500)
+                .error(getDefaultPic(4))
+                .into(imageView);
+    }
 
+    public static void loadMovieLatestImg(ImageView imageView, String url) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .crossFade(500)
+                .override((int) CommonUtils.getDimens(R.dimen.movie_detail_width), (int) CommonUtils.getDimens(R.dimen.movie_detail_height))
+                .placeholder(getDefaultPic(4))
+                .error(getDefaultPic(4))
+                .into(imageView);
+    }
 }

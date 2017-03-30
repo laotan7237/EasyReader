@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--orderInCategory 优先级-->
+    <!--android:icon="@drawable/actionbar_more"-->
+    <item
+        android:id="@+id/actionbar_more"
+        android:orderInCategory="100"
+        android:title="更多信息"
+        app:showAsAction="never"
+        />
+</menu>

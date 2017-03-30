@@ -1,24 +1,104 @@
 package com.laotan.easyreader.ui.fragment.home.child;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.laotan.easyreader.R;
+import com.laotan.easyreader.adapter.MovieTopAdapter;
+import com.laotan.easyreader.bean.douban.HotMovieBean;
+import com.laotan.easyreader.presenter.DouBanMovieTopPresenter;
+import com.laotan.easyreader.presenter.impl.DouBanMovieTopPresenterImpl;
+import com.laotan.easyreader.ui.activity.douban.MovieTopDetailActivity;
+import com.laotan.easyreader.ui.fragment.BaseFragment;
+import com.laotan.easyreader.view.EasyLoadMoreView;
+
+import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * Created by quantan.liu on 2017/3/22.
  */
 
-public class DouBanMovieTopFragment extends Fragment {
-    @Nullable
+public class DouBanMovieTopFragment extends BaseFragment<DouBanMovieTopPresenterImpl> implements DouBanMovieTopPresenter.View, BaseQuickAdapter.RequestLoadMoreListener {
+
+    @BindView(R.id.rcv_activity)
+    RecyclerView rcvActivity;
+    private List<HotMovieBean.SubjectsBean> subjectsList;
+    private MovieTopAdapter movieTopAdapter;
+
+    private EasyLoadMoreView easyLoadMoreView;
+    private static final int TOTAL_COUNTER = 10;
+    private int mCurrentCounter = 0;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText("我是DouBanMovieFragment");
-        return textView;
+    public void refreshView(HotMovieBean data) {
+        subjectsList = data.getSubjects();
+        movieTopAdapter.addData(subjectsList);
+        mCurrentCounter = movieTopAdapter.getData().size();
+        movieTopAdapter.loadMoreComplete();
     }
 
+    @Override
+    protected void loadData() {
+        mPresenter.fetchMovieTop250(mCurrentCounter, mCurrentCounter + TOTAL_COUNTER >= 250 ? 250 : mCurrentCounter + TOTAL_COUNTER);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_recyclerview;
+    }
+
+    @Override
+    protected void initView() {
+        movieTopAdapter = new MovieTopAdapter(subjectsList);
+        easyLoadMoreView = new EasyLoadMoreView();
+        movieTopAdapter.setLoadMoreView(easyLoadMoreView);
+        movieTopAdapter.setOnLoadMoreListener(this, rcvActivity);
+        movieTopAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        rcvActivity.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
+        rcvActivity.setAdapter(movieTopAdapter);
+        movieTopAdapter.setOnItemClickListener(new MovieTopAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClickListener(HotMovieBean.SubjectsBean positionData, View view) {
+                startZhiHuDetailActivity(positionData, view);
+            }
+        });
+    }
+
+    private void startZhiHuDetailActivity(HotMovieBean.SubjectsBean positionData, View view) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), MovieTopDetailActivity.class);
+        intent.putExtra("bean", positionData);
+        /**
+         * 用这个ActivityOptionsCompat比用ActivityOptions兼容性更好，前者是V4下的兼容到16后者到21.
+         * ActivityOptionsCompat.makeSceneTransitionAnimation(）的第三个参数则是跳转后图片显示的transitionName的值
+         *     <android.support.design.widget.AppBarLayout
+         android:transitionName="zhihu_detail_title"
+         android:fitsSystemWindows="true">
+         跳转到目标ImageView不能是addview进来的
+         */
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+                view, getActivity().getResources().getString(R.string.douban_detail_iamge));
+        getActivity().startActivity(intent, options.toBundle());
+    }
+
+    @Override
+    protected void initInject() {
+        getFragmentComponent().inject(this);
+    }
+
+    @Override
+    public void onLoadMoreRequested() {
+        if (mCurrentCounter>=250){
+            movieTopAdapter.loadMoreEnd();
+        }else {
+            loadData();
+        }
+    }
 }

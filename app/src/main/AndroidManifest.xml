@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/SplashTheme">
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +42,19 @@
             android:name=".ui.activity.zhihu.ZhihuThemeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HalfTranslucent" />
+        <activity
+            android:name=".ui.activity.topnews.TopNewsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HalfTranslucent" />
+        <activity
+            android:name=".ui.activity.douban.MovieTopDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/windowTranslucentMovieTop" />
 
+        <activity
+            android:name=".webview.WebViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HalfTranslucent" />
     </application>
 
 </manifest>

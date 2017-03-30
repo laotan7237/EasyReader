@@ -3,7 +3,9 @@ package com.laotan.easyreader.di.component;
 import com.laotan.easyreader.app.App;
 import com.laotan.easyreader.di.module.AppModule;
 import com.laotan.easyreader.di.module.HttpModule;
+import com.laotan.easyreader.http.utils.RetrofitDouBanUtils;
 import com.laotan.easyreader.http.utils.RetrofitGankIoUtils;
+import com.laotan.easyreader.http.utils.RetrofitTopNewsUtils;
 import com.laotan.easyreader.http.utils.RetrofitZhiHuUtils;
 
 import javax.inject.Singleton;
@@ -29,4 +31,8 @@ public interface AppComponent {
     RetrofitZhiHuUtils retrofitZhiHuUtils();
 
     RetrofitGankIoUtils mRetrofitGankIoUtils();
+
+    RetrofitTopNewsUtils mRetrofitTopNewsUtils();
+
+    RetrofitDouBanUtils mRetrofitDouBanUtils();
 }
