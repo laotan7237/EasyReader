@@ -70,9 +70,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="xx"
+                            android:text="NBA"
                             android:textColor="@color/select_gank_day"
-                            android:textSize="25sp" />
+                            android:textSize="23sp" />
 
                     </FrameLayout>
 
@@ -81,7 +81,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="每日干货推荐"
+                        android:text="篮球新闻"
                         android:textColor="@color/colorContent"
                         android:textSize="12sp" />
 
@@ -114,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:text="新电影热映榜"
+                        android:text="快递查询"
                         android:textColor="@color/colorContent"
                         android:textSize="12sp" />
                 </LinearLayout>

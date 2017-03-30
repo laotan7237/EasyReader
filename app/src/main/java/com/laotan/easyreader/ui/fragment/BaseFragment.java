@@ -115,7 +115,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     }
 
 
-
     public void loadBaseData() {
         if (!mIsVisible || !isPrepared || !isFirst) {
             return;
@@ -143,6 +142,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
      * loadData()和initView只执行一次，如果有一些请求需要二次的不要放到loadData()里面。
      */
     protected abstract void initView();
+
     /**
      * dagger2注入
      */
@@ -170,7 +170,9 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     @Override
     public void onDetach() {
         super.onDetach();
-        bind.unbind();
+        if (bind != null) {
+            bind.unbind();
+        }
         if (this.mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
             this.mCompositeSubscription.unsubscribe();
         }

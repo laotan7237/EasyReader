@@ -6,6 +6,7 @@ import com.laotan.easyreader.di.module.HttpModule;
 import com.laotan.easyreader.http.utils.RetrofitDouBanUtils;
 import com.laotan.easyreader.http.utils.RetrofitGankIoUtils;
 import com.laotan.easyreader.http.utils.RetrofitTopNewsUtils;
+import com.laotan.easyreader.http.utils.RetrofitWeChatUtils;
 import com.laotan.easyreader.http.utils.RetrofitZhiHuUtils;
 
 import javax.inject.Singleton;
@@ -35,4 +36,6 @@ public interface AppComponent {
     RetrofitTopNewsUtils mRetrofitTopNewsUtils();
 
     RetrofitDouBanUtils mRetrofitDouBanUtils();
+
+    RetrofitWeChatUtils mRetrofitWeChatUtils();
 }

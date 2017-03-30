@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.blankj.utilcode.utils.SPUtils;
@@ -21,6 +22,7 @@ import com.laotan.easyreader.ui.activity.zhihu.ZhiHuDetailActivity;
 import com.laotan.easyreader.ui.activity.zhihu.ZhihuThemeActivity;
 import com.laotan.easyreader.ui.fragment.BaseFragment;
 import com.laotan.easyreader.utils.GlideImageLoader;
+import com.laotan.easyreader.webview.WebViewActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -40,7 +42,6 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
     private Banner banner;
     private ZhiHuAdapter zhiHuAdapter;
     private List<HomeListBean> homeList;
-
     @Override
     protected void initView() {
     }
@@ -83,6 +84,15 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
             View headerView = getActivity().getLayoutInflater().inflate(R.layout.item_zhihu_header, (ViewGroup) rvZhihu.getParent(), false);
             banner = (Banner) headerView.findViewById(R.id.banner);
             TextView tvZhihuHomeFooter = (TextView) footerView.findViewById(R.id.tv_zhihu_home_footer);
+
+            ImageButton ibXiandu = (ImageButton) headerView.findViewById(R.id.ib_xiandu);
+            ibXiandu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WebViewActivity.loadUrl(getActivity(), "https://gank.io/xiandu", "加载中...");
+
+                }
+            });
             initBanner(topStoriesList);
             zhiHuAdapter.addFooterView(footerView);
             zhiHuAdapter.addHeaderView(headerView);

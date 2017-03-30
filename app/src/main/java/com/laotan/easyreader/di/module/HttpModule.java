@@ -3,10 +3,12 @@ package com.laotan.easyreader.di.module;
 import com.laotan.easyreader.di.qualifier.DoubanUrl;
 import com.laotan.easyreader.di.qualifier.GankUrl;
 import com.laotan.easyreader.di.qualifier.TopNewsUrl;
+import com.laotan.easyreader.di.qualifier.WeChatUrl;
 import com.laotan.easyreader.di.qualifier.ZhihuUrl;
 import com.laotan.easyreader.http.service.DoubanService;
 import com.laotan.easyreader.http.service.GankIoService;
 import com.laotan.easyreader.http.service.TopNewsService;
+import com.laotan.easyreader.http.service.WeChatService;
 import com.laotan.easyreader.http.service.ZhiHuService;
 
 import java.util.concurrent.TimeUnit;
@@ -113,5 +115,19 @@ public class HttpModule {
     @Provides
     DoubanService provideDoubanService(@DoubanUrl Retrofit retrofit) {
         return retrofit.create(DoubanService.class);
+    }
+
+
+    @Singleton
+    @Provides
+    @WeChatUrl
+    Retrofit provideWeChatRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, WeChatService.API_WeChat);
+    }
+
+    @Singleton
+    @Provides
+    WeChatService provideWeChatService(@WeChatUrl Retrofit retrofit) {
+        return retrofit.create(WeChatService.class);
     }
 }

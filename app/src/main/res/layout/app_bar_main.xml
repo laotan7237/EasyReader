@@ -4,41 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    >
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    android:orientation="vertical">
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/colorTheme"
-        app:contentInsetStart="0.0dp"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        android:layout_height="55dp">
 
-//       app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"可以出水波纹
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/colorTheme"
+            app:contentInsetStart="0.0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <FrameLayout
-            android:id="@+id/fl_title_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+            // app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"可以出水波纹
 
-            <ImageView
-                android:id="@+id/iv_title_menu"
-                android:layout_width="23dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/titlebar_menu" />
-        </FrameLayout>
-            <RadioGroup
-                android:id="@+id/rg_home_viewpager_contorl"
-                android:layout_gravity="center"
+            <FrameLayout
+                android:id="@+id/fl_title_menu"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <ImageView
+                    android:id="@+id/iv_title_menu"
+                    android:layout_width="23dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/titlebar_menu" />
+            </FrameLayout>
+
+            <RadioGroup
+                android:id="@+id/rg_home_viewpager_contorl"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rb_home_pager"
@@ -64,7 +67,15 @@
 
             </RadioGroup>
 
-    </android.support.v7.widget.Toolbar>
+
+        </android.support.v7.widget.Toolbar>
+
+        <com.miguelcatalan.materialsearchview.MaterialSearchView
+            android:id="@+id/view_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right" />
+    </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"

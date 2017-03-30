@@ -1,5 +1,6 @@
 package com.laotan.easyreader.http.utils;
 
+import com.laotan.easyreader.bean.gankio.GankIoDataBean;
 import com.laotan.easyreader.bean.gankio.GankIoDayBean;
 import com.laotan.easyreader.http.service.GankIoService;
 
@@ -21,5 +22,7 @@ public class RetrofitGankIoUtils extends HttpUtils {
         return mGankIoService.getGankIoDay(year, month, day);
     }
 
-
+    public Observable<GankIoDataBean> fetchGankIoData(String id, int page, int pre_page) {
+        return mGankIoService.getGankIoData(id, page, pre_page);
+    }
 }

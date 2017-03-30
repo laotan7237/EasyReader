@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
             return;
         }
         mTitleList.add("知乎日报");
-        mTitleList.add("福利");
+        mTitleList.add("头条新闻");
         mTitleList.add("排行榜");
         mTitleList.add("最新电影");
         mFragments.add(new ZhiHuHomeFragment());

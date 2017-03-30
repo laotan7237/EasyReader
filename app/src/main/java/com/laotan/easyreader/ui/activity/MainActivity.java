@@ -13,19 +13,21 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.blankj.utilcode.utils.SPUtils;
 import com.laotan.easyreader.R;
 import com.laotan.easyreader.adapter.HomeFragmentPageAdapter;
 import com.laotan.easyreader.app.App;
+import com.laotan.easyreader.app.AppConstants;
 import com.laotan.easyreader.di.component.ActivityComponent;
 import com.laotan.easyreader.di.component.DaggerActivityComponent;
 import com.laotan.easyreader.di.module.ActivityModule;
+import com.laotan.easyreader.rx.RxBus;
 import com.laotan.easyreader.ui.activity.base.BaseActivity;
 import com.laotan.easyreader.ui.fragment.HomeFragment;
-import com.laotan.easyreader.ui.fragment.gank.GankFragment;
+import com.laotan.easyreader.ui.fragment.gank.AndroidFragment;
 import com.laotan.easyreader.ui.fragment.wechat.WeChatFragment;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +36,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity{
 
     @BindView(R.id.fl_title_menu)
     FrameLayout nvMenu;
@@ -50,6 +52,8 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.vp_content)
     ViewPager vpContent;
+    @BindView(R.id.view_search)
+    MaterialSearchView searchView;
 
     @OnClick(R.id.fl_title_menu)
     public void flTitleMenu() {
@@ -78,6 +82,19 @@ public class MainActivity extends BaseActivity {
             spUtils.putBoolean("home_list_boolean",true);
         }
 
+        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                vpContent.setCurrentItem(2);
+                RxBus.getDefault().post(AppConstants.WECHA_SEARCH, query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
     }
 
     private void initView() {
@@ -100,7 +117,7 @@ public class MainActivity extends BaseActivity {
             }
         });
         List<Fragment> mFragmentList = new ArrayList<>();
-        mFragmentList.add(new GankFragment());
+        mFragmentList.add(new AndroidFragment());
         mFragmentList.add(new HomeFragment());
         mFragmentList.add(new WeChatFragment());
         vpContent.setAdapter(new HomeFragmentPageAdapter(getSupportFragmentManager(), mFragmentList));
@@ -133,23 +150,24 @@ public class MainActivity extends BaseActivity {
         });
 
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        searchView.setMenuItem(item);
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_search:
-                Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_search:
+//                Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     @Override
     public void onBackPressed() {
@@ -181,4 +199,5 @@ public class MainActivity extends BaseActivity {
         }
         return onTouchEvent(ev);
     }
+
 }

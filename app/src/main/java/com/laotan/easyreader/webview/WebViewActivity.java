@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -21,6 +20,7 @@ import android.widget.ProgressBar;
 
 import com.blankj.utilcode.utils.ToastUtils;
 import com.laotan.easyreader.R;
+import com.laotan.easyreader.ui.activity.base.BaseActivity;
 
 
 /**
@@ -30,7 +30,7 @@ import com.laotan.easyreader.R;
  * Thanks to: https://github.com/youlookwhat/WebViewStudy
  * contact me: http://www.jianshu.com/users/e43c6e979831/latest_articles
  */
-public class WebViewActivity extends AppCompatActivity implements IWebPageView {
+public class WebViewActivity extends BaseActivity implements IWebPageView {
 
     // 进度条
     ProgressBar mProgressBar;
@@ -52,7 +52,6 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web_view);
         getIntentData();
         initTitle();
         initWebView();
@@ -330,6 +329,11 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
     protected void onPause() {
         super.onPause();
         webView.onPause();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_web_view;
     }
 
     @Override

@@ -24,7 +24,7 @@
             <ImageView
                 android:id="@+id/iv_theme_item_image"
                 android:transitionName="@string/zhihu_detail_title"
-                android:src="@mipmap/ic_launcher"
+                android:src="@mipmap/haden"
                 android:layout_width="@dimen/list_image_size"
                 android:layout_height="@dimen/list_image_size" />
             <TextView

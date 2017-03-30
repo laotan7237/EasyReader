@@ -112,13 +112,10 @@ public class MovieTopDetailActivity extends LoadingBaseActivity<DoubanMovieDetai
         appbarMovieTopChild.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (appbarMovieTopChild.getBottom()>=toolbarDoubanDetail.getBottom()+ ConvertUtils.dp2px(27)) {
+                if (appbarMovieTopChild.getBottom() >= toolbarDoubanDetail.getBottom() + ConvertUtils.px2dp(27)) {
                     toolbarDoubanDetail.setBackgroundColor(getResources().getColor(R.color.translucent));
-//                    BarUtils.setColor(MovieTopDetailActivity.this, R.color.translucent);//不设置一开始透明的后来滑动后就变不透明
-                    //设置了一直有一个恶心的效果。
                 } else {
                     toolbarDoubanDetail.setBackgroundResource(R.color.colorTheme);
-//                    BarUtils.setColor(MovieTopDetailActivity.this, R.color.colorTheme);
                 }
             }
         });
