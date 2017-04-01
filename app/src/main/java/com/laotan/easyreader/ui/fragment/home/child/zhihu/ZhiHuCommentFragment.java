@@ -3,6 +3,7 @@ package com.laotan.easyreader.ui.fragment.home.child.zhihu;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.blankj.utilcode.utils.SPUtils;
 import com.laotan.easyreader.R;
 import com.laotan.easyreader.adapter.ZhiHuCommentAdapter;
 import com.laotan.easyreader.bean.zhihu.CommentBean;
@@ -24,7 +25,11 @@ public class ZhiHuCommentFragment extends BaseFragment<ZhihuCommentPresenterImpl
     @BindView(R.id.rv_zhihu_comment)
     RecyclerView rvZhihuComment;
 
-    private static boolean isShortComment = true;
+    private boolean isShort;
+    public ZhiHuCommentFragment( boolean isShort) {
+        this.isShort = isShort;
+    }
+
     @Override
     protected void initView() {
         rvZhihuComment.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -34,12 +39,10 @@ public class ZhiHuCommentFragment extends BaseFragment<ZhihuCommentPresenterImpl
     protected void loadData() {
         ZhiHuCommentActivity mZhiHuCommentActivity = (ZhiHuCommentActivity) getActivity();
         int id = mZhiHuCommentActivity.getId();
-        if (isShortComment) {//懒加载在可见的时候加载，会让非静态变量最终都是同一个值所以只能用静态变量。
+        if (isShort) {//懒加载在可见的时候加载，会让非静态变量最终都是同一个值所以只能用静态变量。
             mPresenter.fetchShortCommentInfo(id);
-            isShortComment = false;
         } else {
             mPresenter.fetchLongCommentInfo(id);
-            isShortComment = true;
         }
     }
 

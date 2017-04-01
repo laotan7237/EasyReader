@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import com.laotan.easyreader.di.module.ActivityModule;
 import com.laotan.easyreader.di.scope.ActivityScope;
-import com.laotan.easyreader.ui.activity.MainActivity;
+import com.laotan.easyreader.ui.activity.main.MainActivity;
 import com.laotan.easyreader.ui.activity.douban.MovieTopDetailActivity;
 import com.laotan.easyreader.ui.activity.topnews.TopNewsActivity;
 import com.laotan.easyreader.ui.activity.zhihu.ZhiHuDetailActivity;

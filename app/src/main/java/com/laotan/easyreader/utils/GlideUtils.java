@@ -1,6 +1,7 @@
 package com.laotan.easyreader.utils;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.blankj.utilcode.utils.Utils;
@@ -16,7 +17,7 @@ import com.laotan.easyreader.webview.CommonUtils;
 public class GlideUtils {
     /**
      * 首页zhihu item读取图片
-     * @param imgNumber 图片大小1最大 2中等 3最小正方形的
+     * @param imgNumber 图片大小1最大 2中等 3最小 正方形的
      * @param url
      * @param image
      */

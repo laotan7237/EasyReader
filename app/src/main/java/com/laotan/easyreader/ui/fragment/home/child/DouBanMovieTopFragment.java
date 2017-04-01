@@ -45,6 +45,11 @@ public class DouBanMovieTopFragment extends BaseFragment<DouBanMovieTopPresenter
     }
 
     @Override
+    public void showLoadMoreError() {
+        movieTopAdapter.loadMoreFail();
+    }
+
+    @Override
     protected void loadData() {
         mPresenter.fetchMovieTop250(mCurrentCounter, mCurrentCounter + TOTAL_COUNTER >= 250 ? 250 : mCurrentCounter + TOTAL_COUNTER);
     }

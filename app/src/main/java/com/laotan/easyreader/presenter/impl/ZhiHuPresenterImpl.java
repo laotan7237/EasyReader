@@ -16,6 +16,7 @@ import com.laotan.easyreader.presenter.ZhiHuPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -38,6 +39,7 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
     }
 
     private List<HomeListBean> homeList = new ArrayList<>();
+
     public List<HomeListBean> getHomeList() {
         List<HomeListBean> newHomeList = new ArrayList<>();
         int daily = 0;
@@ -49,37 +51,37 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
         String[] split = homeListString.split("&&");
         for (int i = 0; i < split.length; i++) {
             if ("知乎日报".equals(split[i])) {
-                daily = i+1;
+                daily = i + 1;
                 continue;
             }
             if ("知乎热门".equals(split[i])) {
-                hot = i+1;
+                hot = i + 1;
                 continue;
             }
             if ("知乎主题".equals(split[i])) {
-                theme = i+1;
+                theme = i + 1;
                 continue;
             }
             if ("知乎专栏".equals(split[i])) {
-                section = i+1;
+                section = i + 1;
                 continue;
             }
         }
         for (int y = 1; y <= 4; y++) {
             if (daily == y) {
-                checkAddToNewHomeList("知乎日报", 1,newHomeList);
+                checkAddToNewHomeList("知乎日报", 1, newHomeList);
                 continue;
             }
             if (hot == y) {
-                checkAddToNewHomeList("知乎热门", 2,newHomeList);
+                checkAddToNewHomeList("知乎热门", 2, newHomeList);
                 continue;
             }
             if (theme == y) {
-                checkAddToNewHomeList("知乎主题", 3,newHomeList);
+                checkAddToNewHomeList("知乎主题", 3, newHomeList);
                 continue;
             }
             if (section == y) {
-                checkAddToNewHomeList("知乎专栏", 4,newHomeList);
+                checkAddToNewHomeList("知乎专栏", 4, newHomeList);
                 continue;
             }
         }
@@ -87,7 +89,7 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
     }
 
 
-    private void checkAddToNewHomeList(String title, int type,List<HomeListBean> newHomeList) {
+    private void checkAddToNewHomeList(String title, int type, List<HomeListBean> newHomeList) {
         for (int i = 1; i <= homeList.size(); i++) {
             if (!TextUtils.isEmpty(title) &&
                     title.equals(homeList.get(i - 1).getTitle())) {
@@ -162,8 +164,9 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
                 settitle("知乎主题");
                 List<ThemeListBean.OthersBean> themeList = new ArrayList<>();
                 List<ThemeListBean.OthersBean> themeList2 = new ArrayList<>();
-                for (int i = 0; i < 4; i++) {
-                    if (i < 2) {
+                int random = new Random().nextInt(4);
+                for (int i = random; i < random + 4; i++) {
+                    if (i < random + 2) {
                         themeList.add(others.get(i));
                     } else {
                         themeList2.add(others.get(i));
@@ -187,7 +190,8 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
                 List<SectionListBean.DataBean> data1 = data.getData();
                 settitle("知乎专栏");
                 List<SectionListBean.DataBean> sectionList = new ArrayList<>();
-                for (int i = 0; i < 3; i++) {
+                int random = new Random().nextInt(4);
+                for (int i = random; i < random + 3; i++) {
                     sectionList.add(data1.get(i));
                 }
                 HomeListBean homeListBean = settype(4);

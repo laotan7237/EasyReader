@@ -32,11 +32,11 @@ public class MovieTopAdapter extends BaseQuickAdapter<HotMovieBean.SubjectsBean,
         }
         helper.setText(R.id.tv_item_movie_top_name,item.getTitle());
         helper.setText(R.id.tv_item_movie_top_rating,"评分："+String.valueOf(item.getRating().getAverage()));
-        GlideUtils.loadImage(3,item.getImages().getMedium(), (ImageView) helper.getView(R.id.iv_item_movie_top));
+        GlideUtils.loadImage(3,item.getImages().getLarge(), (ImageView) helper.getView(R.id.iv_item_movie_top));
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickListener.onItemClickListener(item,(ImageView) helper.getView(R.id.iv_item_movie_top));
+                onItemClickListener.onItemClickListener(item, helper.getView(R.id.iv_item_movie_top));
             }
         });
 

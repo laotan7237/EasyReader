@@ -10,6 +10,7 @@ import com.laotan.easyreader.http.LifeSubscription;
 public interface DouBanMovieTopPresenter {
     interface View extends LifeSubscription {
        void refreshView(HotMovieBean data);
+        void showLoadMoreError();
     }
 
     interface Presenter {

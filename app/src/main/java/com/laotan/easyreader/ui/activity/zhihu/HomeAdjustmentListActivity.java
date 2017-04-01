@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
  * Created by quantan.liu on 2017/3/26.
  */
 
-public class AdjustmentHomeListActivity extends BaseActivity {
+public class HomeAdjustmentListActivity extends BaseActivity {
 
     private List<String> mlist;
 

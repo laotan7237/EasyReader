@@ -28,4 +28,12 @@ public interface WeChatService {
      */
     @GET("wxnew")
     Observable<WXHttpResponse<List<WXItemBean>>> getWXHotSearch(@Query("key") String key, @Query("num") int num, @Query("page") int page, @Query("word") String word);
+
+    /**
+     *     https://api.tianapi.com/meinv/?key=APIKEY&num=10
+     *     获取广告图片
+     */
+
+
+
 }

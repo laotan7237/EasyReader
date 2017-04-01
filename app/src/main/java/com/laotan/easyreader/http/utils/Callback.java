@@ -26,17 +26,7 @@ public class Callback<T> extends Subscriber<T> {
     @Override
     public void onError(Throwable e) {
         e.printStackTrace();
-        if (!NetworkUtils.isAvailableByPing()) {
-            ToastUtils.showShortToast("你连接的网络有问题，请检查路由器");
-            if (target != null) {
-                target.setState(AppConstants.STATE_ERROR);
-            }
-            return;
-        }
-        ToastUtils.showShortToast("程序员哥哥偷懒去了，快去举报他");
-        if (target != null) {
-            target.setState(AppConstants.STATE_EMPTY);
-        }
+        onfail();
     }
 
     @Override
@@ -53,5 +43,19 @@ public class Callback<T> extends Subscriber<T> {
     }
 
     public void onResponse() {
+    }
+
+    public void onfail() {
+        if (!NetworkUtils.isAvailableByPing()) {
+            ToastUtils.showShortToast("你连接的网络有问题，请检查路由器");
+            if (target != null) {
+                target.setState(AppConstants.STATE_ERROR);
+            }
+            return;
+        }
+        ToastUtils.showShortToast("程序员哥哥偷懒去了，快去举报他");
+        if (target != null) {
+            target.setState(AppConstants.STATE_EMPTY);
+        }
     }
 }

@@ -9,11 +9,13 @@
 
         //沉浸状态栏
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowTranslucentStatus">true</item>//可以让appbarlayout从最顶上开始，状态栏会覆盖toolbar
+        <item name="android:windowTranslucentStatus">true</item>
+        //可以让appbarlayout从最顶上开始，状态栏会覆盖toolbar
 
         //ActionBarDrawerToggle设置颜色
         <item name="colorControlNormal">@android:color/white</item>
     </style>
+
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">false</item>
     </style>
@@ -24,11 +26,10 @@
         <item name="android:windowBackground">@color/halfTranslucent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
     </style>
-
-    <!--<style name="windowTranslucentMovieTop" parent="HalfTranslucent">-->
-        <!--<item name="android:windowTranslucentStatus">true</item>-->
-        <!--<item name="android:windowIsTranslucent">false</item>-->
-    <!--</style>-->
+    <!--不使用全屏模式的主题-->
+    <style name="windowTranslucentMovieTop" parent="HalfTranslucent">
+        <item name="android:windowTranslucentStatus">false</item>
+    </style>
 
     <!--titleBar样式-->
     <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">

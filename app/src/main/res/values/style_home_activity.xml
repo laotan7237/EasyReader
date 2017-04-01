@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="home"></style>
+    <style name="home.fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:background">@drawable/ripple_tab_bg</item>
+    </style>
+    <style name="home.textview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/comment_text</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!--水平分隔线-->
+    <style name="home.horizontalLine">
+        <item name="android:background">@color/colorLineItem</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+</resources>

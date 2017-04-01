@@ -1,5 +1,6 @@
-package com.laotan.easyreader.ui.activity;
+package com.laotan.easyreader.ui.activity.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -15,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 
 import com.blankj.utilcode.utils.SPUtils;
+import com.blankj.utilcode.utils.ToastUtils;
 import com.laotan.easyreader.R;
 import com.laotan.easyreader.adapter.HomeFragmentPageAdapter;
 import com.laotan.easyreader.app.App;
@@ -36,7 +39,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity{
+public class MainActivity extends BaseActivity {
 
     @BindView(R.id.fl_title_menu)
     FrameLayout nvMenu;
@@ -60,6 +63,31 @@ public class MainActivity extends BaseActivity{
         dlLayout.openDrawer(GravityCompat.START);
     }
 
+    @OnClick(R.id.fl_exit_app)
+    public void exitApp() {
+        this.killAll();
+    }
+
+    @OnClick(R.id.fl_feedback)
+    public void feedback() {
+        startActivity(new Intent(this,FeedbackActivity.class));
+    }
+
+    @OnClick(R.id.fl_about_us)
+    public void aboutUs() {
+        startActivity(new Intent(this,AboutUsActivity.class));
+    }
+
+    @OnClick(R.id.fl_setting)
+    public void setting() {
+        ToastUtils.showShortToast("设置暂时还没有开发");
+    }
+
+    @OnClick(R.id.fl_theme_color)
+    public void themeColor() {
+        ToastUtils.showShortToast("个性换肤暂时还没有开发");
+    }
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -79,7 +107,7 @@ public class MainActivity extends BaseActivity{
         SPUtils spUtils = new SPUtils("home_list");
         if (!spUtils.getBoolean("home_list_boolean")) {
             spUtils.putString("home_list", "知乎日报&&知乎热门&&知乎主题&&知乎专栏&&");
-            spUtils.putBoolean("home_list_boolean",true);
+            spUtils.putBoolean("home_list_boolean", true);
         }
 
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
@@ -150,6 +178,7 @@ public class MainActivity extends BaseActivity{
         });
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
@@ -189,6 +218,26 @@ public class MainActivity extends BaseActivity{
         return new ActivityModule(this);
     }
 
+
+    /**
+     * 按返回键不退出应用。
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (dlLayout.isDrawerOpen(GravityCompat.START)) {
+                dlLayout.closeDrawer(GravityCompat.START);
+            } else {
+                // 不退出程序，进入后台
+                moveTaskToBack(true);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {

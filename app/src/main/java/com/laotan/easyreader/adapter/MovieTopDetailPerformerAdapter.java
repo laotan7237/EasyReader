@@ -26,6 +26,7 @@ public class MovieTopDetailPerformerAdapter extends BaseQuickAdapter<PersonBean,
     protected void convert(BaseViewHolder helper, final PersonBean item) {
         helper.setText(R.id.tv_performer_name,item.getName());
         helper.setText(R.id.tv_performer,item.getType());
+        if (item.getAvatars()!=null)
         GlideUtils.loadImage(3,item.getAvatars().getLarge(), (ImageView) helper.getView(R.id.iv_avatar));
 
         helper.itemView.setOnClickListener(new View.OnClickListener() {

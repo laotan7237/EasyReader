@@ -59,6 +59,8 @@ public class ZhiHuCommentActivity extends BaseActivity{
         myAdapter.notifyDataSetChanged();
         tabZhihuComment.setTabMode(TabLayout.MODE_FIXED);
         tabZhihuComment.setupWithViewPager(vpZhihuComment);
+
+
     }
 
     private void initFragmentList() {
@@ -66,9 +68,9 @@ public class ZhiHuCommentActivity extends BaseActivity{
             return;
         }
         mTitleList.add(String.format("短评论(%d)",shortNum));
+        mFragments.add(new ZhiHuCommentFragment(true));
         mTitleList.add(String.format("长评论(%d)", longNum));
-        mFragments.add(new ZhiHuCommentFragment());
-        mFragments.add(new ZhiHuCommentFragment());
+        mFragments.add(new ZhiHuCommentFragment(false));
     }
 
     public int getId() {

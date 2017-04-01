@@ -17,7 +17,7 @@ import com.laotan.easyreader.bean.zhihu.DailyListBean;
 import com.laotan.easyreader.bean.zhihu.HomeListBean;
 import com.laotan.easyreader.presenter.ZhiHuPresenter;
 import com.laotan.easyreader.presenter.impl.ZhiHuPresenterImpl;
-import com.laotan.easyreader.ui.activity.zhihu.AdjustmentHomeListActivity;
+import com.laotan.easyreader.ui.activity.zhihu.HomeAdjustmentListActivity;
 import com.laotan.easyreader.ui.activity.zhihu.ZhiHuDetailActivity;
 import com.laotan.easyreader.ui.activity.zhihu.ZhihuThemeActivity;
 import com.laotan.easyreader.ui.fragment.BaseFragment;
@@ -42,6 +42,7 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
     private Banner banner;
     private ZhiHuAdapter zhiHuAdapter;
     private List<HomeListBean> homeList;
+
     @Override
     protected void initView() {
     }
@@ -57,9 +58,11 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
         SPUtils spUtils = new SPUtils("home_list");
         if (spUtils.getBoolean("home_list_ischange")) {
             homeList = mPresenter.getHomeList();
-            zhiHuAdapter.setNewData(homeList);
-            zhiHuAdapter.notifyDataSetChanged();
-            spUtils.putBoolean("home_list_ischange", false);
+            if (zhiHuAdapter != null) {
+                zhiHuAdapter.setNewData(homeList);
+                zhiHuAdapter.notifyDataSetChanged();
+                spUtils.putBoolean("home_list_ischange", false);
+            }
         }
         super.onResume();
     }
@@ -101,7 +104,7 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
             tvZhihuHomeFooter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getActivity(), AdjustmentHomeListActivity.class));
+                    startActivity(new Intent(getActivity(), HomeAdjustmentListActivity.class));
                 }
             });
             zhiHuAdapter.setOnItemClickListener(new ZhiHuAdapter.OnItemClickListener() {

@@ -21,7 +21,7 @@ public class EasyLoadMoreView extends LoadMoreView {
     @Override
     protected int getLoadFailViewId() {
         return R.id.load_more_load_fail_view;
-    }//这个读取失败怎么样都不会出现，因为我们统一处理了。
+    }
 
     @Override
     protected int getLoadEndViewId() {

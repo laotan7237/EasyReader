@@ -30,4 +30,6 @@ public interface GankIoService {
      */
     @GET("data/{type}/{pre_page}/{page}")
     Observable<GankIoDataBean> getGankIoData(@Path("type") String id, @Path("page") int page, @Path("pre_page") int pre_page);
+
+
 }

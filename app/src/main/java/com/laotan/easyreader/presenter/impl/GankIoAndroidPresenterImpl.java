@@ -29,7 +29,6 @@ public class GankIoAndroidPresenterImpl extends BasePresenter<GankIoAndroidPrese
         invoke(mRetrofitGankIoUtils.fetchGankIoData("Android",page,pre_page),new Callback<GankIoDataBean>(){
             @Override
             public void onResponse(GankIoDataBean data) {
-                LogUtils.e("aaaaaGankIoDataBean"+data);
                 List<GankIoDataBean.ResultBean> results = data.getResults();
                 checkState(results);
                 mLifeSubscription.refreshView(results);

@@ -50,4 +50,7 @@
     <color name="colorText">#2C2C2C</color>
     <!--电影评分-->
     <color name="colorRateRed">#FB5B81</color>
+
+    <!--item的分割线-->
+    <color name="colorLineItem">#FFDDDDDD</color>
 </resources>

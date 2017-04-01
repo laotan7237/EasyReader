@@ -11,21 +11,67 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/ll_haden"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@mipmap/hadenhuojian"
             android:orientation="vertical">
 
             <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="140dp"-->
-                <!--android:background="@drawable/home_adjust_background"-->
-                <!--android:text="   立即登录  "-->
-                <!--android:textColor="@drawable/home_adjust_text_color" />-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_marginTop="140dp"-->
+            <!--android:background="@drawable/home_adjust_background"-->
+            <!--android:text="   立即登录  "-->
+            <!--android:textColor="@drawable/home_adjust_text_color" />-->
         </LinearLayout>
 
+        <FrameLayout
+            android:id="@+id/fl_theme_color"
+            style="@style/home.fragment">
 
+            <TextView
+                style="@style/home.textview"
+                android:drawableLeft="@drawable/theme_color"
+                android:text="个性换肤" />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fl_about_us"
+            style="@style/home.fragment">
+
+            <TextView
+                style="@style/home.textview"
+                android:drawableLeft="@drawable/about_us"
+                android:text="关于易读" />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fl_setting"
+            style="@style/home.fragment">
+
+            <TextView
+                style="@style/home.textview"
+                android:drawableLeft="@drawable/setting"
+                android:text="设置" />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fl_feedback"
+            style="@style/home.fragment">
+
+        <TextView
+            style="@style/home.textview"
+            android:drawableLeft="@drawable/feedback"
+            android:text="意见反馈" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_exit_app"
+            style="@style/home.fragment">
+
+            <TextView
+                style="@style/home.textview"
+                android:drawableLeft="@drawable/exit_app"
+                android:text="退出" />
+        </FrameLayout>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

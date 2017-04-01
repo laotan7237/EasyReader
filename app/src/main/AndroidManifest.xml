@@ -12,12 +12,12 @@
     <application
         android:name=".app.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/easyreader_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/easyreader_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.main.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,17 +31,29 @@
             android:theme="@style/HalfTranslucent"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
+            android:name=".ui.activity.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activity.main.FeedbackActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/windowTranslucentMovieTop" />
+        <activity
+            android:name=".ui.activity.main.AboutUsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/windowTranslucentMovieTop" />
+        <activity
             android:name=".ui.activity.zhihu.ZhiHuCommentActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/HalfTranslucent" />
+            android:theme="@style/windowTranslucentMovieTop" />
         <activity
-            android:name=".ui.activity.zhihu.AdjustmentHomeListActivity"
+            android:name=".ui.activity.zhihu.HomeAdjustmentListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/HalfTranslucent" />
+            android:theme="@style/windowTranslucentMovieTop" />
         <activity
             android:name=".ui.activity.zhihu.ZhihuThemeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/HalfTranslucent" />
+            android:theme="@style/windowTranslucentMovieTop" />
         <activity
             android:name=".ui.activity.topnews.TopNewsActivity"
             android:screenOrientation="portrait"
@@ -54,7 +66,7 @@
         <activity
             android:name=".webview.WebViewActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/HalfTranslucent" />
+            android:theme="@style/windowTranslucentMovieTop" />
     </application>
 
 </manifest>
