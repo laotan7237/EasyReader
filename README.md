@@ -26,8 +26,11 @@
 
 ## Thanks
 ### API:<br>
-知乎日报  干货集中营API 豆瓣电影。
-
+知乎日报  干货集中营API 豆瓣电影。<br>
+### APP:<br>
+[云阅](https://github.com/youlookwhat/CloudReader)项目部分UI从该项目中获取，非常感谢作者，作者对我也有很大的帮助
+[GeekNews](https://github.com/codeestX/GeekNews)学习了他的degger2的思路
+[looklook]https://github.com/xinghongfei/LookLook)参考了他的网易API。
 ## End:<br>
 如果该项目对您有帮助，帮忙点个star吧。
 
