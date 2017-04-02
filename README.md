@@ -34,4 +34,4 @@
 ## About me:<br>
 * QQ: 502325525
 * 简书: http://www.jianshu.com/p/04f4d4d1c424
-* CSDN: http://write.blog.csdn.net/postlist?ticket=ST-78349-EcVyN2NAgysmzWUboSZm-passport.csdn.net
+* CSDN: http://blog.csdn.net/laotan7237/article/details/68946797
