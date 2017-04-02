@@ -33,5 +33,5 @@
 
 ## About me:<br>
 * QQ: 502325525
-* 简书: http://www.jianshu.com/users/d2f73b699192/timeline
+* 简书: http://www.jianshu.com/p/04f4d4d1c424
 * CSDN: http://write.blog.csdn.net/postlist?ticket=ST-78349-EcVyN2NAgysmzWUboSZm-passport.csdn.net
