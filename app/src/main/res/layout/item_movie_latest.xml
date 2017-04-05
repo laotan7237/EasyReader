@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_one_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/ripple_one_item_bg"
     android:orientation="vertical"
-    android:paddingLeft="5dp"
     android:paddingTop="5dp">
 
     <LinearLayout
         android:id="@+id/ll_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_16"
         android:orientation="horizontal">
 
         <ImageView
@@ -21,15 +23,14 @@
             android:layout_height="132dp"
             android:layout_marginRight="12dp"
             android:background="@color/colorPageBg"
-            android:transitionName="@string/douban_detail_iamge"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:transitionName="@string/douban_detail_iamge" />
         <!--android:defaultPicType="@{0}"-->
         <!--android:displayFadeImage="@{subjectsBean.images.large}"-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginRight="12dp"
             android:orientation="vertical">
 
@@ -45,39 +46,30 @@
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/tv_one_genres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
             <!--导演-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
                 android:orientation="horizontal">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="43dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="导演：" />
-
-                    <View
-                        android:layout_width="28dp"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@color/colorTheme" />
-
-                </LinearLayout>
+                    android:text="导演：" />
 
                 <TextView
                     android:id="@+id/tv_one_directors"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:maxLines="1"
-                   />
+                    android:maxLines="1" />
             </LinearLayout>
 
             <!--主演-->
@@ -96,34 +88,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:maxLines="2"
-                    />
+                    android:maxLines="2" />
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_one_genres"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:ellipsize="end"
-                android:maxLines="1"/>
-
-            <TextView
-                android:id="@+id/tv_one_rating_rate"
+                android:id="@+id/tv_collect_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="1"/>
+                android:textSize="@dimen/sp_16"
+                android:textColor="@color/colorLatestRead"
+                android:maxLines="1" />
         </LinearLayout>
-
     </LinearLayout>
 
     <View
-        android:id="@+id/view_color"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginLeft="112dp"
-        android:layout_marginTop="5dp" />
+        android:background="#2000" />
 </LinearLayout>

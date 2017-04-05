@@ -434,6 +434,24 @@ public class HotMovieBean implements Serializable{
                 }
             }
         }
+
+        @Override
+        public String toString() {
+            return "SubjectsBean{" +
+                    "rating=" + rating +
+                    ", title='" + title + '\'' +
+                    ", collect_count=" + collect_count +
+                    ", original_title='" + original_title + '\'' +
+                    ", subtype='" + subtype + '\'' +
+                    ", year='" + year + '\'' +
+                    ", images=" + images +
+                    ", alt='" + alt + '\'' +
+                    ", id='" + id + '\'' +
+                    ", genres=" + genres +
+                    ", casts=" + casts +
+                    ", directors=" + directors +
+                    '}';
+        }
     }
 
     @Override

@@ -6,66 +6,37 @@
     android:overScrollMode="never"
     android:scrollbars="vertical">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.laotan.easyreader.view.HorizontalScrollView
+            android:id="@+id/hs_film"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="300dp"
+            android:background="@color/colorWhite"></com.laotan.easyreader.view.HorizontalScrollView>
 
-            <LinearLayout
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-150dp">
+
+            <com.laotan.easyreader.view.HorizontalScrollHighDownView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
+                android:layout_height="150dp" />
 
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="18dp"
-                    android:background="@color/colorTheme" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="另称"
-                    android:textColor="@color/colorContent"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
-
-            <!--又名-->
             <TextView
-                android:id="@+id/tv_movie_top_title"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:textColor="@color/colorTitle" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp">
-
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="18dp"
-                    android:background="@color/colorTheme" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="剧情简介"
-                    android:textColor="@color/colorContent"
-                    android:textSize="17sp" />
-            </LinearLayout>
+                android:text="简介"
+                android:textColor="@color/colorContent"
+                android:textSize="17sp" />
 
             <TextView
+                android:layout_marginTop="50dp"
                 android:id="@+id/tv_movie_top_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,37 +44,6 @@
                 android:padding="12dp"
                 android:textColor="@color/colorTitle"
                 android:textSize="15sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingTop="10dp">
-
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="18dp"
-                    android:background="@color/colorTheme" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="导演 &amp; 演员"
-                    android:textColor="@color/colorContent"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
-
-            <!--导演&演员-->
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_cast"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible" />
-
-        </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
 </android.support.v4.widget.NestedScrollView><!--如果只有一个RecyclerView的布局直接用这个就好了-->

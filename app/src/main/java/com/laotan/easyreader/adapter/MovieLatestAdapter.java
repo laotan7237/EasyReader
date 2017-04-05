@@ -27,7 +27,7 @@ public class MovieLatestAdapter extends BaseQuickAdapter<HotMovieBean.SubjectsBe
         helper.setText(R.id.tv_one_directors,  StringFormatUtil.formatLatestName(item.getDirectors()));
         helper.setText(R.id.tv_one_casts,  StringFormatUtil.formatLatestCastsName(item.getCasts()));
         helper.setText(R.id.tv_one_genres,"评分：" + item.getRating().getAverage());
-        helper.setText(R.id.tv_one_rating_rate,"类型：" + StringFormatUtil.formatGenres(item.getGenres()));
+        helper.setText(R.id.tv_collect_count,item.getCollect_count()+"人看过");
         GlideUtils.loadMovieLatestImg((ImageView) helper.getView(R.id.iv_one_photo),item.getImages().getLarge());
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

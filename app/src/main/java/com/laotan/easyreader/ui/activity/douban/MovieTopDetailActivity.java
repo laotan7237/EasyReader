@@ -4,33 +4,33 @@ import android.graphics.Color;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blankj.utilcode.utils.ConvertUtils;
 import com.bumptech.glide.Glide;
 import com.laotan.easyreader.R;
-import com.laotan.easyreader.adapter.MovieTopDetailPerformerAdapter;
 import com.laotan.easyreader.bean.douban.HotMovieBean;
 import com.laotan.easyreader.bean.douban.MovieDetailBean;
+import com.laotan.easyreader.bean.douban.PersonBean;
 import com.laotan.easyreader.presenter.DoubanMovieDetailPresenter;
 import com.laotan.easyreader.presenter.impl.DoubanMovieDetailPresenterImpl;
 import com.laotan.easyreader.ui.activity.base.LoadingBaseActivity;
 import com.laotan.easyreader.utils.GlideUtils;
 import com.laotan.easyreader.utils.StringFormatUtil;
+import com.laotan.easyreader.view.HorizontalScrollView;
 import com.laotan.easyreader.webview.WebViewActivity;
+
+import java.util.List;
 
 import butterknife.BindView;
 import jp.wasabeef.glide.transformations.BlurTransformation;
-
-import static com.laotan.easyreader.R.id.tv_one_casts;
 
 /**
  * Created by quantan.liu on 2017/3/28.
@@ -43,8 +43,6 @@ public class MovieTopDetailActivity extends LoadingBaseActivity<DoubanMovieDetai
     private ImageView ivOnePhoto;
     private TextView tvOneRatingRate;
     private TextView tvOneRatingNumber;
-    private TextView tvOneDirectors;
-    private TextView tvOneCasts;
     private TextView tvOneGenres;
     private TextView tvOneDay;
     private TextView tvOneCity;
@@ -53,14 +51,15 @@ public class MovieTopDetailActivity extends LoadingBaseActivity<DoubanMovieDetai
 
     @BindView(R.id.nsv_movie_top_detail)
     NestedScrollView nsvMovieTopDetail;
-    @BindView(R.id.tv_movie_top_title)
-    TextView tvMovieTopTitle;
+
+    @BindView(R.id.hs_film)
+    HorizontalScrollView hsFilm;
+
     @BindView(R.id.tv_movie_top_detail)
     TextView tvMovieTopDetail;
-    @BindView(R.id.rv_cast)
-    RecyclerView rvCast;
     private String mMoreUrl;
     private String mMovieName;
+    private TextView tvFormerly;
 
 
     @Override
@@ -102,11 +101,10 @@ public class MovieTopDetailActivity extends LoadingBaseActivity<DoubanMovieDetai
         ivOnePhoto = (ImageView) findViewById(R.id.iv_one_photo);
         tvOneRatingRate = (TextView) findViewById(R.id.tv_one_rating_rate);
         tvOneRatingNumber = (TextView) findViewById(R.id.tv_one_rating_number);
-        tvOneDirectors = (TextView) findViewById(R.id.tv_one_directors);
-        tvOneCasts = (TextView) findViewById(tv_one_casts);
         tvOneGenres = (TextView) findViewById(R.id.tv_one_genres);
         tvOneDay = (TextView) findViewById(R.id.tv_one_day);
         tvOneCity = (TextView) findViewById(R.id.tv_one_city);
+        tvFormerly = (TextView) findViewById(R.id.tv_formerly);
         toolbarDoubanDetail = (Toolbar) findViewById(R.id.toolbar_douban_detail);
         initToolBar(toolbarDoubanDetail, "");
         appbarMovieTopChild.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -182,15 +180,25 @@ public class MovieTopDetailActivity extends LoadingBaseActivity<DoubanMovieDetai
     public void refreshView(MovieDetailBean data) {
         mMoreUrl = data.getAlt();
         mMovieName = data.getTitle();
-        toolbarDoubanDetail.setSubtitle(String.format("主演：%s", StringFormatUtil.formatName(data.getCasts())));
+        tvFormerly.setText("原名：" + data.getOriginal_title());
         tvOneRatingNumber.setText(data.getRatings_count() + "人评分");
-        tvOneDirectors.setText(StringFormatUtil.formatName(data.getDirectors()));
-        tvOneCasts.setText(StringFormatUtil.formatName(data.getCasts()));
         tvOneCity.setText("制作国家/地区：" + data.getCountries() + "");
-        tvMovieTopTitle.setText(StringFormatUtil.formatGenres(data.getAka()));
+
+        List<PersonBean> castsList = data.getCasts();
+        for (final PersonBean personBean : castsList) {
+            ImageView imageView = new ImageView(this);
+            imageView.setLayoutParams(new ViewGroup.LayoutParams(ConvertUtils.dp2px(120), ConvertUtils.dp2px(200)));
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            GlideUtils.loadMovieTopImg(imageView,personBean.getAvatars().getLarge());
+            hsFilm.addView(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WebViewActivity.loadUrl(MovieTopDetailActivity.this,personBean.getAlt(),"加载中。。。");
+                }
+            });
+        }
         tvMovieTopDetail.setText(data.getSummary());
-        rvCast.setLayoutManager(new LinearLayoutManager(this));
-        rvCast.setAdapter(new MovieTopDetailPerformerAdapter(data.getCasts()));
     }
 
     /**
