@@ -1,4 +1,4 @@
-# EasyReader
+# 易读
 模仿网易云音乐UI，用知乎和gankio 网易新闻 豆瓣电影的API来完成一个基于Material Design +Rxjava + Retrofit + dagger2 + MVP构架的项目<br>
 <br>为了更好的学习Material Design和主流框架，于是有了该项目。
 
