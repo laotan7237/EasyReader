@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
+    <!--大家在看这个效果之前一定要看下面这个链接，看完了基本就明白怎么用的了
+    windows按住ctrl+鼠标左键点击下面链接 mac菊花++鼠标左键点击下面链接-->
+    <!--http://blog.csdn.net/qq_31340657/article/details/51918773-->
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:transitionName="@string/zhihu_detail_title">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/clp_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_image_height"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="10dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <!--app:layout_scrollFlags="scroll"
+            scroll 跟着底下的view的滑动
+            enterAlways 底下的View滑动后，整个AppBarLayout会收起，效果比较突兀，而且不现实toolbar
+            enterAlwaysCollapsed 一般我们都会用这个效果，这个效果很好不过toolbar会滑出屏幕，可以自己去体会
+            exitUntilCollapsed 和上面的效果类是不过toolbar不会滑出屏幕
+            snap 和 enterAlwaysCollapsed类是不过他的toolbar会闪出去。
+            -->
+            <!--            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+           该属性改变CollapsingToolbarLayout的toolbar的text颜色
+           ImageView的android:layout_marginTop="-27dp"可以让图片在状态栏底下，不然会有状态栏会出现。
+           -->
+
+            <ImageView
+                android:layout_marginTop="-27dp"
+                android:id="@+id/detail_bar_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bottom_black_bg" />
+
+            <TextView
+                android:id="@+id/detail_bar_copyright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:layout_marginBottom="3dp"
+                android:padding="6dp"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_zhihu_detail"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            <!--                app:layout_collapseMode="pin"
+            这个属性可以让toolbar留在屏幕，替代整个CollapsingToolbarLayout-->
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_base_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    <!--  app:layout_behavior="@string/appbar_scrolling_view_behavior"这个属性可以让布局在CoordinatorLayout
+    的下面并且滑动可以让CoordinatorLayout有效-->
+</android.support.design.widget.CoordinatorLayout>
+
+
