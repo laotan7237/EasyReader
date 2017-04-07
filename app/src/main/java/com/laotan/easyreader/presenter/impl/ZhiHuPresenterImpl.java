@@ -30,11 +30,9 @@ import javax.inject.Inject;
 
 public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> implements ZhiHuPresenter.Presenter {
     private RetrofitZhiHuUtils mRetrofitZhiHuUtils;
-    private final SPUtils spHomeList;
 
     @Inject
     public ZhiHuPresenterImpl(RetrofitZhiHuUtils mRetrofitZhiHuUtils) {
-        spHomeList = new SPUtils("home_list");
         this.mRetrofitZhiHuUtils = mRetrofitZhiHuUtils;
     }
 

@@ -5,12 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorPageBg"
     android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_feedback"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

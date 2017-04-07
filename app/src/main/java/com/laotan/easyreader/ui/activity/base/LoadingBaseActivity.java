@@ -76,6 +76,7 @@ public abstract class LoadingBaseActivity<T extends BasePresenter> extends BaseA
      * * 如果是静态页面不需要网络请求的在子类的loadData方法中添加以下2行即可
      * mLoadingPage.state = STATE_SUCCESS;
      * mLoadingPage.showPage();
+     * 或者调用setState(AppConstants.STATE_SUCCESS)
      */
     protected abstract void loadData();
 

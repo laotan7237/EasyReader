@@ -5,34 +5,24 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 
 import com.blankj.utilcode.utils.LogUtils;
 import com.blankj.utilcode.utils.ToastUtils;
 import com.laotan.easyreader.R;
-import com.laotan.easyreader.ui.activity.base.BaseActivity;
+import com.laotan.easyreader.ui.activity.base.ToolbarBaseActivity;
 import com.laotan.easyreader.webview.WebViewActivity;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by quantan.liu on 2017/4/1.
  */
 
-public class FeedbackActivity extends BaseActivity {
+public class FeedbackActivity extends ToolbarBaseActivity {
 
     private String qqUrl = "mqqwpa://im/chat?chat_type=wpa&uin=502325525&version=1";
-
-    private Unbinder bind;
-
-    @BindView(R.id.toolbar_feedback)
-    Toolbar toolbarFeedback;
 
     @OnClick(R.id.tv_issues)
     public void issues() {
@@ -54,24 +44,13 @@ public class FeedbackActivity extends BaseActivity {
     }
 
     @Override
-    protected int getLayoutId() {
+    public int getContentLayoutId() {
         return R.layout.activity_feedback;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        bind = ButterKnife.bind(this);
-        setToolBar(toolbarFeedback, "意见反馈");
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (bind != null) {
-            bind.unbind();
-        }
+    protected void initUI() {
+        setToolBar(toolbarBaseActivity, "意见反馈");
     }
 
     /**

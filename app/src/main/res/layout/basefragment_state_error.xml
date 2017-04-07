@@ -6,17 +6,10 @@
               android:gravity="center"
               android:orientation="vertical"
               android:visibility="gone">
-
-    <ImageView
-        android:id="@+id/img_err"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/load_err" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="加载失败,点击重试"
+        android:text="加载失败,点击空白处重试"
         android:textSize="15sp" />
 </LinearLayout>
