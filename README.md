@@ -6,6 +6,7 @@
 ![](https://github.com/laotan7237/EasyReader/blob/master/imagefile/home.png)
 ![](https://github.com/laotan7237/EasyReader/blob/master/imagefile/zhihudetail.png)
 ![](https://github.com/laotan7237/EasyReader/blob/master/imagefile/movietop.png)
+![](https://github.com/laotan7237/EasyReader/blob/master/imagefile/movielatest.png)
 ![](https://github.com/laotan7237/EasyReader/blob/master/imagefile/moviedetail.png)<br>
 ## Preview
 ![](https://github.com/laotan7237/EasyReader/blob/master/imagefile/easyreader.gif)
