@@ -7,10 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.laotan.easyreader.app.App;
-import com.laotan.easyreader.di.component.DaggerFragmentComponent;
-import com.laotan.easyreader.di.component.FragmentComponent;
-import com.laotan.easyreader.di.module.FragmentModule;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.laotan.easyreader.http.LifeSubscription;
 import com.laotan.easyreader.http.Stateful;
 import com.laotan.easyreader.presenter.BasePresenter;
@@ -28,9 +25,11 @@ import rx.subscriptions.CompositeSubscription;
  */
 
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements LifeSubscription, Stateful {
-
     @Inject
     protected P mPresenter;
+
+    @Inject
+    protected BaseQuickAdapter mAdapter;
 
     public LoadingPage mLoadingPage;
 
@@ -148,12 +147,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
      */
     protected abstract void initInject();
 
-    protected FragmentComponent getFragmentComponent() {
-        return DaggerFragmentComponent.builder()
-                .appComponent(App.getAppComponent())
-                .fragmentModule(new FragmentModule(this))
-                .build();
-    }
 
 
     private CompositeSubscription mCompositeSubscription;

@@ -20,11 +20,10 @@ import com.blankj.utilcode.utils.SPUtils;
 import com.blankj.utilcode.utils.ToastUtils;
 import com.laotan.easyreader.R;
 import com.laotan.easyreader.adapter.HomeFragmentPageAdapter;
-import com.laotan.easyreader.app.App;
 import com.laotan.easyreader.app.AppConstants;
-import com.laotan.easyreader.di.component.ActivityComponent;
-import com.laotan.easyreader.di.component.DaggerActivityComponent;
-import com.laotan.easyreader.di.module.ActivityModule;
+import com.laotan.easyreader.injector.component.ActivityComponent;
+import com.laotan.easyreader.injector.component.DaggerActivityComponent;
+import com.laotan.easyreader.injector.module.ActivityModule;
 import com.laotan.easyreader.rx.RxBus;
 import com.laotan.easyreader.ui.activity.base.BaseActivity;
 import com.laotan.easyreader.ui.fragment.HomeFragment;
@@ -101,7 +100,6 @@ public class MainActivity extends BaseActivity {
         ActionBar supportActionBar = getSupportActionBar();
         supportActionBar.setDisplayHomeAsUpEnabled(false);//不显示返回键
         supportActionBar.setDisplayShowTitleEnabled(false);//去除默认标题
-        getActivityComponent().inject(this);
         initView();
         //初始化首页栏目顺序
         SPUtils spUtils = new SPUtils("home_list");
@@ -209,7 +207,6 @@ public class MainActivity extends BaseActivity {
 
     protected ActivityComponent getActivityComponent() {
         return DaggerActivityComponent.builder()
-                .appComponent(App.getAppComponent())
                 .activityModule(getActivityModule())
                 .build();
     }

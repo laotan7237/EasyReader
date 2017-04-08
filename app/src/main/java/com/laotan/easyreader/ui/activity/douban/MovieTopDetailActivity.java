@@ -19,6 +19,8 @@ import com.laotan.easyreader.R;
 import com.laotan.easyreader.bean.douban.HotMovieBean;
 import com.laotan.easyreader.bean.douban.MovieDetailBean;
 import com.laotan.easyreader.bean.douban.PersonBean;
+import com.laotan.easyreader.injector.component.activity.DaggerMovieDetailComponent;
+import com.laotan.easyreader.injector.module.http.DoubanHttpModule;
 import com.laotan.easyreader.presenter.DoubanMovieDetailPresenter;
 import com.laotan.easyreader.presenter.impl.DoubanMovieDetailPresenterImpl;
 import com.laotan.easyreader.ui.activity.base.LoadingBaseActivity;
@@ -85,7 +87,9 @@ public class MovieTopDetailActivity extends LoadingBaseActivity<DoubanMovieDetai
 
     @Override
     protected void initInject() {
-        getActivityComponent().inject(this);
+        DaggerMovieDetailComponent.builder()
+                .doubanHttpModule(new DoubanHttpModule())
+                .build().injectMovieDetail(this);
     }
 
     @Override

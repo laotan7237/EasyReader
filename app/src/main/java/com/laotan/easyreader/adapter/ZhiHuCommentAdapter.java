@@ -33,13 +33,10 @@ public class ZhiHuCommentAdapter extends BaseQuickAdapter<CommentBean.CommentsBe
     private static final int STATE_SHRINK = 3;  //已收缩
 
     private static final int MAX_LINE = 2;  //起始最多显示2行
-    private List<CommentBean.CommentsBean> mList;
     private TextView tvCommentExpand;
 
     public ZhiHuCommentAdapter(List<CommentBean.CommentsBean> data) {
         super(R.layout.item_zhihu_comment, data);
-        this.mList = data;
-
     }
 
 
@@ -67,11 +64,11 @@ public class ZhiHuCommentAdapter extends BaseQuickAdapter<CommentBean.CommentsBe
                             tvCommentReply.setMaxLines(MAX_LINE);
                             tvCommentExpand.setVisibility(View.VISIBLE);
                             tvCommentExpand.setText("展开");
-                            mList.get(helper.getAdapterPosition()).getReply_to().setExpandState(STATE_SHRINK);
+                            mData.get(helper.getAdapterPosition()).getReply_to().setExpandState(STATE_SHRINK);
                             tvCommentExpand.setOnClickListener(new OnStateClickListener(helper.getAdapterPosition(), tvCommentReply));
                         } else {
                             tvCommentExpand.setVisibility(View.GONE);
-                            mList.get(helper.getAdapterPosition()).getReply_to().setExpandState(STATE_NONE);
+                            mData.get(helper.getAdapterPosition()).getReply_to().setExpandState(STATE_NONE);
                         }
                     }
                 });
@@ -106,16 +103,16 @@ public class ZhiHuCommentAdapter extends BaseQuickAdapter<CommentBean.CommentsBe
         @Override
         public void onClick(View view) {
             TextView tv = (TextView) view;
-            if (mList.get(position).getReply_to().getExpandState() == STATE_SHRINK) {
+            if (mData.get(position).getReply_to().getExpandState() == STATE_SHRINK) {
                 tv.setText("收起");
                 replyView.setMaxLines(Integer.MAX_VALUE);
                 replyView.setEllipsize(null);
-                mList.get(position).getReply_to().setExpandState(STATE_EXPAND);
+                mData.get(position).getReply_to().setExpandState(STATE_EXPAND);
             } else {
                 tv.setText("展开");
                 replyView.setMaxLines(MAX_LINE);
                 replyView.setEllipsize(TextUtils.TruncateAt.END);
-                mList.get(position).getReply_to().setExpandState(STATE_SHRINK);
+                mData.get(position).getReply_to().setExpandState(STATE_SHRINK);
             }
         }
     }

@@ -12,10 +12,6 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.Window;
 
-import com.laotan.easyreader.app.App;
-import com.laotan.easyreader.di.component.ActivityComponent;
-import com.laotan.easyreader.di.component.DaggerActivityComponent;
-import com.laotan.easyreader.di.module.ActivityModule;
 import com.laotan.easyreader.http.LifeSubscription;
 
 import java.util.LinkedList;
@@ -270,12 +266,5 @@ public abstract class BaseActivity extends AppCompatActivity implements LifeSubs
                 (startR + (int) (fraction * (endR - startR))) << 16 |
                 (startG + (int) (fraction * (endG - startG))) << 8 |
                 (startB + (int) (fraction * (endB - startB)));
-    }
-
-    protected ActivityComponent getActivityComponent() {
-        return DaggerActivityComponent.builder()
-                .appComponent(App.getAppComponent())
-                .activityModule(new ActivityModule(this))
-                .build();
     }
 }

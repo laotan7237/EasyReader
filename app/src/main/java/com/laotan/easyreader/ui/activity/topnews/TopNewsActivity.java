@@ -6,6 +6,8 @@ import com.laotan.easyreader.R;
 import com.laotan.easyreader.app.AppConstants;
 import com.laotan.easyreader.bean.topnews.NewsDetailBean;
 import com.laotan.easyreader.bean.topnews.NewsListBean;
+import com.laotan.easyreader.injector.component.activity.DaggerTopNewsComponent;
+import com.laotan.easyreader.injector.module.http.TopNewsHttpModule;
 import com.laotan.easyreader.presenter.TopNewsPresenter;
 import com.laotan.easyreader.presenter.impl.TopNewsPresenterImpl;
 import com.laotan.easyreader.ui.activity.base.ZhihuDetailBaseActivity;
@@ -47,7 +49,9 @@ public class TopNewsActivity extends ZhihuDetailBaseActivity<TopNewsPresenterImp
 
     @Override
     protected void initInject() {
-        getActivityComponent().inject(this);
+        DaggerTopNewsComponent.builder()
+                .topNewsHttpModule(new TopNewsHttpModule())
+                .build().injectTopNews(this);
     }
 
 

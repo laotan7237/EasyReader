@@ -11,6 +11,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.laotan.easyreader.R;
 import com.laotan.easyreader.adapter.TopNewsAdapter;
 import com.laotan.easyreader.bean.topnews.NewsListBean;
+import com.laotan.easyreader.injector.component.fragment.DaggerTopNewsComponent;
+import com.laotan.easyreader.injector.module.fragment.TopNewsModule;
+import com.laotan.easyreader.injector.module.http.TopNewsHttpModule;
 import com.laotan.easyreader.presenter.TopNewsPresenter;
 import com.laotan.easyreader.presenter.impl.TopNewsPresenterImpl;
 import com.laotan.easyreader.ui.activity.topnews.TopNewsActivity;
@@ -32,7 +35,6 @@ public class TopNewsFragment extends BaseFragment<TopNewsPresenterImpl> implemen
     RecyclerView rcvActivity;
 
     private ArrayList<NewsListBean.NewsBean> newsList;
-    private TopNewsAdapter topNewsAdapter;
     private EasyLoadMoreView easyLoadMoreView;
 
     private int currentIndex = 0;
@@ -51,14 +53,13 @@ public class TopNewsFragment extends BaseFragment<TopNewsPresenterImpl> implemen
 
     @Override
     protected void initView() {
-        topNewsAdapter = new TopNewsAdapter(newsList);
         easyLoadMoreView = new EasyLoadMoreView();
-        topNewsAdapter.setLoadMoreView(easyLoadMoreView);
-        topNewsAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
-        topNewsAdapter.setOnLoadMoreListener(this, rcvActivity);
+        mAdapter.setLoadMoreView(easyLoadMoreView);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
+        mAdapter.setOnLoadMoreListener(this, rcvActivity);
         rcvActivity.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        rcvActivity.setAdapter(topNewsAdapter);
-        topNewsAdapter.setOnItemClickListener(new TopNewsAdapter.OnItemClickListener() {
+        rcvActivity.setAdapter(mAdapter);
+        ((TopNewsAdapter)mAdapter).setOnItemClickListener(new TopNewsAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(String id, String imgUrl, View view) {
                 startZhiHuDetailActivity(id, imgUrl, view);
@@ -68,17 +69,21 @@ public class TopNewsFragment extends BaseFragment<TopNewsPresenterImpl> implemen
 
     @Override
     protected void initInject() {
-        getFragmentComponent().inject(this);
+        DaggerTopNewsComponent.builder()
+                .topNewsHttpModule(new TopNewsHttpModule())
+                .topNewsModule(new TopNewsModule())
+                .build().injectTopNews(this);
     }
 
     @Override
     public void refreshView(NewsListBean data) {
-        newsList = data.getNewsList();
-        topNewsAdapter.addData(newsList);
-        index+=1;
-        currentIndex = topNewsAdapter.getData().size()-2*index;
         LogUtils.e("aaaacurrentIndex"+currentIndex);
-        topNewsAdapter.loadMoreComplete();
+
+        newsList = data.getNewsList();
+        mAdapter.addData(newsList);
+        index+=1;
+        currentIndex = mAdapter.getData().size()-2*index;
+        mAdapter.loadMoreComplete();
     }
 
 
@@ -104,7 +109,7 @@ public class TopNewsFragment extends BaseFragment<TopNewsPresenterImpl> implemen
         // 当列表滑动到倒数第N个Item的时候(默认是1)回调onLoadMoreRequested方法
        // mQuickAdapter.setAutoLoadMoreSize(int);
         if (currentIndex >= 60) {
-            topNewsAdapter.loadMoreEnd();
+            mAdapter.loadMoreEnd();
         } else {
             mPresenter.fetchTopNewsList(currentIndex);
         }

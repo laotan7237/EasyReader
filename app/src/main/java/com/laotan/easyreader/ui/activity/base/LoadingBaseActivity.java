@@ -3,6 +3,7 @@ package com.laotan.easyreader.ui.activity.base;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.laotan.easyreader.http.Stateful;
 import com.laotan.easyreader.presenter.BasePresenter;
 import com.laotan.easyreader.view.LoadingPage;

@@ -15,6 +15,9 @@ import com.laotan.easyreader.R;
 import com.laotan.easyreader.adapter.ZhiHuAdapter;
 import com.laotan.easyreader.bean.zhihu.DailyListBean;
 import com.laotan.easyreader.bean.zhihu.HomeListBean;
+import com.laotan.easyreader.injector.component.fragment.DaggerZhihuHomeComponent;
+import com.laotan.easyreader.injector.module.fragment.ZhihuHomeModule;
+import com.laotan.easyreader.injector.module.http.ZhihuHttpModule;
 import com.laotan.easyreader.presenter.ZhiHuPresenter;
 import com.laotan.easyreader.presenter.impl.ZhiHuPresenterImpl;
 import com.laotan.easyreader.ui.activity.zhihu.HomeAdjustmentListActivity;
@@ -40,7 +43,8 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
     @BindView(R.id.xrv_zhihu)
     RecyclerView rvZhihu;
     private Banner banner;
-    private ZhiHuAdapter zhiHuAdapter;
+
+
     private List<HomeListBean> homeList;
 
     @Override
@@ -49,7 +53,6 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
 
     @Override
     protected void loadData() {
-
         mPresenter.fetchData();
     }
 
@@ -58,9 +61,9 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
         SPUtils spUtils = new SPUtils("home_list");
         if (spUtils.getBoolean("home_list_ischange")) {
             homeList = mPresenter.getHomeList();
-            if (zhiHuAdapter != null) {
-                zhiHuAdapter.setNewData(homeList);
-                zhiHuAdapter.notifyDataSetChanged();
+            if (mAdapter != null) {
+                mAdapter.setNewData(homeList);
+                mAdapter.notifyDataSetChanged();
                 spUtils.putBoolean("home_list_ischange", false);
             }
         }
@@ -74,7 +77,10 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
 
     @Override
     protected void initInject() {
-        getFragmentComponent().inject(this);
+        DaggerZhihuHomeComponent.builder()
+                .zhihuHttpModule(new ZhihuHttpModule())
+                .zhihuHomeModule(new ZhihuHomeModule())
+                .build().injectZhihuhome(this);
     }
 
     @Override
@@ -82,7 +88,6 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
         homeList = mPresenter.getHomeList();
         List<DailyListBean.TopStoriesBean> topStoriesList = mPresenter.getTopStoriesList();
         if (homeList.size() == 12) {
-            zhiHuAdapter = new ZhiHuAdapter(homeList, getActivity());
             View footerView = getActivity().getLayoutInflater().inflate(R.layout.item_zhihu_footer, (ViewGroup) rvZhihu.getParent(), false);
             View headerView = getActivity().getLayoutInflater().inflate(R.layout.item_zhihu_header, (ViewGroup) rvZhihu.getParent(), false);
             banner = (Banner) headerView.findViewById(R.id.banner);
@@ -97,17 +102,18 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
                 }
             });
             initBanner(topStoriesList);
-            zhiHuAdapter.addFooterView(footerView);
-            zhiHuAdapter.addHeaderView(headerView);
+            mAdapter.setNewData(homeList);
+            mAdapter.addFooterView(footerView);
+            mAdapter.addHeaderView(headerView);
             rvZhihu.setLayoutManager(new LinearLayoutManager(getActivity()));
-            rvZhihu.setAdapter(zhiHuAdapter);
+            rvZhihu.setAdapter(mAdapter);
             tvZhihuHomeFooter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(getActivity(), HomeAdjustmentListActivity.class));
                 }
             });
-            zhiHuAdapter.setOnItemClickListener(new ZhiHuAdapter.OnItemClickListener() {
+            ((ZhiHuAdapter) mAdapter).setOnItemClickListener(new ZhiHuAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClickListener(int id, View view) {
                     startZhiHuDetailActivity(id, view);

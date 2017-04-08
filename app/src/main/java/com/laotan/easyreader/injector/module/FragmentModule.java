@@ -1,9 +1,9 @@
-package com.laotan.easyreader.di.module;
+package com.laotan.easyreader.injector.module;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 
-import com.laotan.easyreader.di.scope.FragmentScope;
+import com.laotan.easyreader.injector.scope.FragmentScope;
 
 import dagger.Module;
 import dagger.Provides;
@@ -26,4 +26,5 @@ public class FragmentModule {
     public Activity provideActivity() {
         return fragment.getActivity();
     }
+
 }

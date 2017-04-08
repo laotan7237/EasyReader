@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.laotan.easyreader.R;
 import com.laotan.easyreader.bean.zhihu.DetailExtraBean;
 import com.laotan.easyreader.bean.zhihu.ZhihuDetailBean;
+import com.laotan.easyreader.injector.component.activity.DaggerZhihuDetailComponent;
+import com.laotan.easyreader.injector.module.http.ZhihuHttpModule;
 import com.laotan.easyreader.presenter.ZhiHuDetailPresenter;
 import com.laotan.easyreader.presenter.impl.ZhiHuDetailPresenterImpl;
 import com.laotan.easyreader.ui.activity.base.ZhihuDetailBaseActivity;
@@ -51,7 +53,9 @@ public class ZhiHuDetailActivity extends ZhihuDetailBaseActivity<ZhiHuDetailPres
 
     @Override
     protected void initInject() {
-        getActivityComponent().inject(this);
+        DaggerZhihuDetailComponent.builder()
+                .zhihuHttpModule(new ZhihuHttpModule())
+                .build().injectZhiHuDetail(this);
     }
 
     @Override
@@ -139,7 +143,7 @@ public class ZhiHuDetailActivity extends ZhihuDetailBaseActivity<ZhiHuDetailPres
     @OnClick(R.id.tv_detail_bottom_comment)
     void gotoComment() {
         Intent intent = new Intent();
-        intent.setClass(this,ZhiHuCommentActivity.class);
+        intent.setClass(this, ZhiHuCommentActivity.class);
         intent.putExtra("id", id);
         intent.putExtra("allNum", allNum);
         intent.putExtra("shortNum", shortNum);

@@ -15,12 +15,17 @@ import com.laotan.easyreader.adapter.ZhihuSectionAdapter;
 import com.laotan.easyreader.adapter.ZhihuThemeAdapter;
 import com.laotan.easyreader.bean.zhihu.SectionChildListBean;
 import com.laotan.easyreader.bean.zhihu.ThemeChildListBean;
+import com.laotan.easyreader.injector.component.activity.DaggerZhihuThemeComponent;
+import com.laotan.easyreader.injector.module.activity.ZhihuThemeModule;
+import com.laotan.easyreader.injector.module.http.ZhihuHttpModule;
 import com.laotan.easyreader.presenter.ZhihuThemeDetailPresenter;
 import com.laotan.easyreader.presenter.impl.ZhihuThemeDetailPresenterImpl;
 import com.laotan.easyreader.ui.activity.base.ZhihuThemeBaseActivity;
 import com.laotan.easyreader.utils.GlideUtils;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import jp.wasabeef.glide.transformations.BlurTransformation;
@@ -33,7 +38,8 @@ public class ZhihuThemeActivity extends ZhihuThemeBaseActivity<ZhihuThemeDetailP
 
     @BindView(R.id.rcv_activity)
     RecyclerView rcvActivity;
-    private ZhihuThemeAdapter zhihuThemeAdapter;
+    @Inject
+    ZhihuThemeAdapter zhihuThemeAdapter;
     private ZhihuSectionAdapter zhihuSectionAdapter;
     private int id;
     private List storiesList;
@@ -108,7 +114,10 @@ public class ZhihuThemeActivity extends ZhihuThemeBaseActivity<ZhihuThemeDetailP
 
     @Override
     protected void initInject() {
-        getActivityComponent().inject(this);
+        DaggerZhihuThemeComponent.builder()
+                .zhihuHttpModule(new ZhihuHttpModule())
+                .zhihuThemeModule(new ZhihuThemeModule())
+                .build().injectZhiHuTheme(this);
     }
 
     @Override

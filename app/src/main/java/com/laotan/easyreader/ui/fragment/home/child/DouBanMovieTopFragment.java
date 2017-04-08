@@ -11,6 +11,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.laotan.easyreader.R;
 import com.laotan.easyreader.adapter.MovieTopAdapter;
 import com.laotan.easyreader.bean.douban.HotMovieBean;
+import com.laotan.easyreader.injector.component.fragment.DaggerDoubanMovieTopComponent;
+import com.laotan.easyreader.injector.module.fragment.DoubanMovieTopModule;
+import com.laotan.easyreader.injector.module.http.DoubanHttpModule;
 import com.laotan.easyreader.presenter.DouBanMovieTopPresenter;
 import com.laotan.easyreader.presenter.impl.DouBanMovieTopPresenterImpl;
 import com.laotan.easyreader.ui.activity.douban.MovieTopDetailActivity;
@@ -27,10 +30,10 @@ import butterknife.BindView;
 
 public class DouBanMovieTopFragment extends BaseFragment<DouBanMovieTopPresenterImpl> implements DouBanMovieTopPresenter.View, BaseQuickAdapter.RequestLoadMoreListener {
 
+
     @BindView(R.id.rcv_activity)
     RecyclerView rcvActivity;
     private List<HotMovieBean.SubjectsBean> subjectsList;
-    private MovieTopAdapter movieTopAdapter;
 
     private EasyLoadMoreView easyLoadMoreView;
     private static final int TOTAL_COUNTER = 10;
@@ -39,14 +42,14 @@ public class DouBanMovieTopFragment extends BaseFragment<DouBanMovieTopPresenter
     @Override
     public void refreshView(HotMovieBean data) {
         subjectsList = data.getSubjects();
-        movieTopAdapter.addData(subjectsList);
-        mCurrentCounter = movieTopAdapter.getData().size();
-        movieTopAdapter.loadMoreComplete();
+        mAdapter.addData(subjectsList);
+        mCurrentCounter = mAdapter.getData().size();
+        mAdapter.loadMoreComplete();
     }
 
     @Override
     public void showLoadMoreError() {
-        movieTopAdapter.loadMoreFail();
+        mAdapter.loadMoreFail();
     }
 
     @Override
@@ -61,14 +64,14 @@ public class DouBanMovieTopFragment extends BaseFragment<DouBanMovieTopPresenter
 
     @Override
     protected void initView() {
-        movieTopAdapter = new MovieTopAdapter(subjectsList);
+        mAdapter = new MovieTopAdapter(subjectsList);
         easyLoadMoreView = new EasyLoadMoreView();
-        movieTopAdapter.setLoadMoreView(easyLoadMoreView);
-        movieTopAdapter.setOnLoadMoreListener(this, rcvActivity);
-        movieTopAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        mAdapter.setLoadMoreView(easyLoadMoreView);
+        mAdapter.setOnLoadMoreListener(this, rcvActivity);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         rcvActivity.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
-        rcvActivity.setAdapter(movieTopAdapter);
-        movieTopAdapter.setOnItemClickListener(new MovieTopAdapter.OnItemClickListener() {
+        rcvActivity.setAdapter(mAdapter);
+        ((MovieTopAdapter) mAdapter).setOnItemClickListener(new MovieTopAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(HotMovieBean.SubjectsBean positionData, View view) {
                 startZhiHuDetailActivity(positionData, view);
@@ -95,14 +98,17 @@ public class DouBanMovieTopFragment extends BaseFragment<DouBanMovieTopPresenter
 
     @Override
     protected void initInject() {
-        getFragmentComponent().inject(this);
+        DaggerDoubanMovieTopComponent.builder()
+                .doubanHttpModule(new DoubanHttpModule())
+                .doubanMovieTopModule(new DoubanMovieTopModule())
+                .build().injectDoubanMovieTop(this);
     }
 
     @Override
     public void onLoadMoreRequested() {
-        if (mCurrentCounter>=250){
-            movieTopAdapter.loadMoreEnd();
-        }else {
+        if (mCurrentCounter >= 250) {
+            mAdapter.loadMoreEnd();
+        } else {
             loadData();
         }
     }

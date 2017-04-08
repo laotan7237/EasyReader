@@ -1,8 +1,8 @@
-package com.laotan.easyreader.di.module;
+package com.laotan.easyreader.injector.module;
 
 import android.app.Activity;
 
-import com.laotan.easyreader.di.scope.ActivityScope;
+import com.laotan.easyreader.injector.scope.ActivityScope;
 
 import dagger.Module;
 import dagger.Provides;

@@ -5,9 +5,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.laotan.easyreader.R;
-import com.laotan.easyreader.adapter.WeChatAdapter;
 import com.laotan.easyreader.app.AppConstants;
 import com.laotan.easyreader.bean.wechat.WXItemBean;
+import com.laotan.easyreader.injector.component.fragment.DaggerWeChatComponent;
+import com.laotan.easyreader.injector.module.fragment.WeChatModule;
+import com.laotan.easyreader.injector.module.http.WeChatHttpModule;
 import com.laotan.easyreader.presenter.WeChatPresenter;
 import com.laotan.easyreader.presenter.impl.WeChatPresenterImpl;
 import com.laotan.easyreader.rx.RxBus;
@@ -33,12 +35,11 @@ public class WeChatFragment extends BaseFragment<WeChatPresenterImpl> implements
 
     private int currentPage = 1;
     private List<WXItemBean> data;
-    private WeChatAdapter weChatAdapter;
     private CompositeSubscription searshSubscription;
 
     @Override
     public void refreshView(List<WXItemBean> data) {
-        weChatAdapter.setNewData(data);
+        mAdapter.setNewData(data);
     }
 
     @Override
@@ -56,14 +57,16 @@ public class WeChatFragment extends BaseFragment<WeChatPresenterImpl> implements
 
     @Override
     protected void initView() {
-        weChatAdapter = new WeChatAdapter(data);
         rcvActivity.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rcvActivity.setAdapter(weChatAdapter);
+        rcvActivity.setAdapter(mAdapter);
     }
 
     @Override
     protected void initInject() {
-        getFragmentComponent().inject(this);
+        DaggerWeChatComponent.builder()
+                .weChatHttpModule(new WeChatHttpModule())
+                .weChatModule(new WeChatModule())
+                .build().injectWeChat(this);
     }
 
     public void registerEvent() {

@@ -3,10 +3,11 @@ package com.laotan.easyreader.ui.fragment.home.child.zhihu;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.blankj.utilcode.utils.SPUtils;
 import com.laotan.easyreader.R;
-import com.laotan.easyreader.adapter.ZhiHuCommentAdapter;
 import com.laotan.easyreader.bean.zhihu.CommentBean;
+import com.laotan.easyreader.injector.component.fragment.DaggerZhihuCommentComponent;
+import com.laotan.easyreader.injector.module.fragment.ZhihuCommentModule;
+import com.laotan.easyreader.injector.module.http.ZhihuHttpModule;
 import com.laotan.easyreader.presenter.ZhihuCommentPresenter;
 import com.laotan.easyreader.presenter.impl.ZhihuCommentPresenterImpl;
 import com.laotan.easyreader.ui.activity.zhihu.ZhiHuCommentActivity;
@@ -53,13 +54,16 @@ public class ZhiHuCommentFragment extends BaseFragment<ZhihuCommentPresenterImpl
 
     @Override
     protected void initInject() {
-        getFragmentComponent().inject(this);
+        DaggerZhihuCommentComponent.builder()
+                .zhihuHttpModule(new ZhihuHttpModule())
+                .zhihuCommentModule(new ZhihuCommentModule())
+                .build().injectZhihuComment(this);
     }
 
 
     @Override
     public void showRecyclerView(List<CommentBean.CommentsBean> list) {
-        ZhiHuCommentAdapter zhiHuCommentAdapter = new ZhiHuCommentAdapter(list);
-        rvZhihuComment.setAdapter(zhiHuCommentAdapter);
+        mAdapter.setNewData(list);
+        rvZhihuComment.setAdapter(mAdapter);
     }
 }

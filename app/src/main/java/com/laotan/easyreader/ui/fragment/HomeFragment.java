@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (inflate == null) {
-            inflate = inflater.inflate(R.layout.fragment_gank,null);
+            inflate = inflater.inflate(R.layout.fragment_gank, null);
             ButterKnife.bind(this, inflate);
         }
         return inflate;

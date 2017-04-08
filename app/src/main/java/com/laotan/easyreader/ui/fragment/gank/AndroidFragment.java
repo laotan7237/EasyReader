@@ -9,6 +9,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.laotan.easyreader.R;
 import com.laotan.easyreader.adapter.GankIoAndroidAdapter;
 import com.laotan.easyreader.bean.gankio.GankIoDataBean;
+import com.laotan.easyreader.injector.component.fragment.DaggerAndroidComponent;
+import com.laotan.easyreader.injector.module.fragment.AndroidModule;
+import com.laotan.easyreader.injector.module.http.GankIoHttpModule;
 import com.laotan.easyreader.presenter.GankIoAndroidPresenter;
 import com.laotan.easyreader.presenter.impl.GankIoAndroidPresenterImpl;
 import com.laotan.easyreader.ui.fragment.BaseFragment;
@@ -33,21 +36,20 @@ public class AndroidFragment extends BaseFragment<GankIoAndroidPresenterImpl> im
     private int page;
     private final static int PRE_PAGE = 10;
     private List<GankIoDataBean.ResultBean> data;
-    private GankIoAndroidAdapter gankIoAndroidAdapter;
 
     private boolean isRefresh = false;
     @Override
     public void refreshView(List<GankIoDataBean.ResultBean> data) {
         if (isRefresh){
             srlAndroid.setRefreshing(false);
-            gankIoAndroidAdapter.setEnableLoadMore(true);
+            mAdapter.setEnableLoadMore(true);
             isRefresh = false;
-            gankIoAndroidAdapter.setNewData(data);
+            mAdapter.setNewData(data);
         }else{
             srlAndroid.setEnabled(true);
             page++;
-            gankIoAndroidAdapter.addData(data);
-            gankIoAndroidAdapter.loadMoreComplete();
+            mAdapter.addData(data);
+            mAdapter.loadMoreComplete();
         }
 
     }
@@ -65,31 +67,33 @@ public class AndroidFragment extends BaseFragment<GankIoAndroidPresenterImpl> im
     @Override
     protected void initView() {
         srlAndroid.setColorSchemeColors(getResources().getColor(R.color.colorTheme));
-        gankIoAndroidAdapter = new GankIoAndroidAdapter(data);
         rvAndroid.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rvAndroid.setAdapter(gankIoAndroidAdapter);
+        rvAndroid.setAdapter(mAdapter);
         srlAndroid.setOnRefreshListener(this);
-        gankIoAndroidAdapter.setLoadMoreView(new EasyLoadMoreView());
-        gankIoAndroidAdapter.setOnLoadMoreListener(this,rvAndroid);
+        mAdapter.setLoadMoreView(new EasyLoadMoreView());
+        mAdapter.setOnLoadMoreListener(this,rvAndroid);
     }
 
     @Override
     protected void initInject() {
-        getFragmentComponent().inject(this);
+        DaggerAndroidComponent.builder()
+                .gankIoHttpModule(new GankIoHttpModule())
+                .androidModule(new AndroidModule())
+                .build().injectAndroid(this);
     }
 
     @Override
     public void onRefresh() {
         page = 0;
         isRefresh =true;
-        gankIoAndroidAdapter.setEnableLoadMore(false);
+        mAdapter.setEnableLoadMore(false);
         mPresenter.fetchGankIoData(page,PRE_PAGE);
     }
 
     @Override
     public void onLoadMoreRequested() {
         if (page >= 6) {
-            gankIoAndroidAdapter.loadMoreEnd();
+            mAdapter.loadMoreEnd();
             srlAndroid.setEnabled(true);
         } else {
            loadData();

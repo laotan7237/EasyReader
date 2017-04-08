@@ -11,6 +11,9 @@ import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.laotan.easyreader.R;
 import com.laotan.easyreader.adapter.MovieLatestAdapter;
 import com.laotan.easyreader.bean.douban.HotMovieBean;
+import com.laotan.easyreader.injector.component.fragment.DaggerDoubanMovieLatestComponent;
+import com.laotan.easyreader.injector.module.fragment.DoubanMovieLatestModule;
+import com.laotan.easyreader.injector.module.http.DoubanHttpModule;
 import com.laotan.easyreader.presenter.DoubanHotMoviePresenter;
 import com.laotan.easyreader.presenter.impl.DoubanHotMoviePresenterImpl;
 import com.laotan.easyreader.ui.activity.douban.MovieTopDetailActivity;
@@ -29,12 +32,11 @@ public class DouBanMovieLatestFragment extends BaseFragment<DoubanHotMoviePresen
     @BindView(R.id.rcv_activity)
     RecyclerView rcvActivity;
     private List<HotMovieBean.SubjectsBean> subjectsBeanList;
-    private MovieLatestAdapter movieLatestAdapter;
 
     @Override
     public void refreshView(HotMovieBean data) {
         subjectsBeanList = data.getSubjects();
-        movieLatestAdapter.addData(subjectsBeanList);
+        mAdapter.addData(subjectsBeanList);
     }
 
     @Override
@@ -49,17 +51,16 @@ public class DouBanMovieLatestFragment extends BaseFragment<DoubanHotMoviePresen
 
     @Override
     protected void initView() {
-        movieLatestAdapter = new MovieLatestAdapter(subjectsBeanList);
         rcvActivity.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rcvActivity.setAdapter(movieLatestAdapter);
-        movieLatestAdapter.openLoadAnimation(new BaseAnimation() {
+        rcvActivity.setAdapter(mAdapter);
+        mAdapter.openLoadAnimation(new BaseAnimation() {
             @Override
             public Animator[] getAnimators(View view) {
                 return new Animator[]{
                 };
             }
         });
-        movieLatestAdapter.setOnItemClickListener(new MovieLatestAdapter.OnItemClickListener() {
+        ((MovieLatestAdapter) mAdapter).setOnItemClickListener(new MovieLatestAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(HotMovieBean.SubjectsBean positionData, View view) {
                 startZhiHuDetailActivity(positionData, view);
@@ -69,7 +70,10 @@ public class DouBanMovieLatestFragment extends BaseFragment<DoubanHotMoviePresen
 
     @Override
     protected void initInject() {
-        getFragmentComponent().inject(this);
+        DaggerDoubanMovieLatestComponent.builder()
+                .doubanHttpModule(new DoubanHttpModule())
+                .doubanMovieLatestModule(new DoubanMovieLatestModule())
+                .build().injectDoubanMovieLatest(this);
     }
 
     private void startZhiHuDetailActivity(HotMovieBean.SubjectsBean positionData, View view) {
