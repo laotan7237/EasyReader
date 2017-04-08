@@ -121,22 +121,24 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
 
                 @Override
                 public void OnItemThemeClickListener(int id, View view) {
-                    startZhihuThemeActivity("id", id);
+                    startZhihuThemeActivity("id", id,view);
                 }
 
                 @Override
                 public void OnItemSectionClickListener(int id, View view) {
-                    startZhihuThemeActivity("section_id", id);
+                    startZhihuThemeActivity("section_id", id,view);
                 }
             });
         }
     }
 
-    private void startZhihuThemeActivity(String name, int id) {
+    private void startZhihuThemeActivity(String name, int id,View view) {
         Intent intent = new Intent();
         intent.setClass(getActivity(), ZhihuThemeActivity.class);
         intent.putExtra(name, id);
-        getActivity().startActivity(intent);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+                view, getActivity().getResources().getString(R.string.zhihu_theme));
+        getActivity().startActivity(intent, options.toBundle());
     }
 
     private void startZhiHuDetailActivity(int id, View view) {

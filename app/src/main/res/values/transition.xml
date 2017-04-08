@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="zhihu_detail_title">zhihu_detail_title</string>
+    <string name="zhihu_theme">zhihu_theme</string>
     <string name="douban_detail_iamge">douban_detail_image</string>
 
 </resources>

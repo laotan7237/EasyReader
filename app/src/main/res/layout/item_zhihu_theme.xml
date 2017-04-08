@@ -22,7 +22,7 @@
             android:background="@mipmap/img_four_bi_three"
             android:scaleType="fitXY"
 
-            android:transitionName="@string/zhihu_detail_title" />
+            android:transitionName="@string/zhihu_theme" />
 
         <!--android:background="@drawable/img_two_bi_one"-->
 
@@ -56,8 +56,7 @@
             android:layout_height="95dp"
             android:background="@mipmap/img_four_bi_three"
             android:scaleType="fitXY"
-
-            android:transitionName="@string/zhihu_detail_title" />
+            android:transitionName="@string/zhihu_theme" />
 
         <TextView
             android:id="@+id/tv_two_one_two_title"

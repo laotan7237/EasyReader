@@ -22,8 +22,7 @@
             <ImageView
                 android:id="@+id/iv_two_one_one"
                 android:layout_width="match_parent"
-                android:transitionName="@string/zhihu_detail_title"
-
+                android:transitionName="@string/zhihu_theme"
                 android:layout_height="95dp"
                 android:background="@mipmap/img_four_bi_three"
                 android:scaleType="fitXY" />
@@ -58,7 +57,7 @@
                 android:id="@+id/iv_two_one_two"
                 android:layout_width="match_parent"
                 android:layout_height="95dp"
-                android:transitionName="@string/zhihu_detail_title"
+                android:transitionName="@string/zhihu_theme"
                 android:background="@mipmap/img_four_bi_three"
                 android:scaleType="fitXY" />
 
@@ -97,8 +96,7 @@
             android:id="@+id/iv_one_photo"
             android:layout_width="match_parent"
             android:layout_height="127dp"
-            android:transitionName="@string/zhihu_detail_title"
-
+            android:transitionName="@string/zhihu_theme"
             android:background="@mipmap/img_two_bi_one"
             android:scaleType="fitXY" />
 
