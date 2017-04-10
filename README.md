@@ -34,7 +34,7 @@
 [looklook](https://github.com/xinghongfei/LookLook)参考了他的网易API。<br>
 ## End:<br>
 如果该项目对您有帮助，帮忙点个star吧。<br>
-作者还会努力更新带来更多的技术点。
+作者还会努力更新，带来更多的技术点。
 ## About me:<br>
 * QQ: 502325525
 * 简书: http://www.jianshu.com/p/04f4d4d1c424
