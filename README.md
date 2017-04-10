@@ -1,7 +1,7 @@
 # 易读
 模仿网易云音乐UI，用知乎和gankio 网易新闻 豆瓣电影的API来完成一个基于Material Design +Rxjava + Retrofit + dagger2 + MVP构架的项目<br>
 <br>为了更好的学习Material Design和主流框架，于是有了该项目。
-
+<br>[APP下载地址](https://fir.im/4hfb?release_id=58eae5f2ca87a867100000b2)大家觉得项目构建慢的话，可以先下载来玩玩看，支持5.0以上，本项目可以支持4.0以上不过部分动画会失效，如果要用4.0-5.0的自己去gradle里面修改。
 ## Screenshots
 ![](https://github.com/laotan7237/EasyReader/blob/master/imagefile/home.png)
 ![](https://github.com/laotan7237/EasyReader/blob/master/imagefile/zhihudetail.png)
@@ -24,7 +24,7 @@
 * BaseRecyclerViewAdapterHelper+RecyclerView完成下拉刷新，上拉加载更多。
 * Glide做图片的处理和加载
 * 使用CoordinatorLayout + AppBarLayout + CollapsingToolbarLayout。
-* BaseActivity里面有抽取出模仿微信的侧滑关闭的功能，这个属于自定义控件知识。还有[电影详情页自定义控件](http://blog.csdn.net/laotan7237/article/details/60576755)影人图片左右滑动的Viewgroup，都是作者自己想出来的，值得学习的。
+* 自定义控件[电影详情页自定义控件](http://blog.csdn.net/laotan7237/article/details/60576755)影人图片左右滑动的Viewgroup，侧滑关闭也是属于自定义控件的知识，都是作者自己想出来的，值得学习的。
 ## Thanks
 ### API:<br>
 知乎日报  干货集中营API 豆瓣电影。<br>
@@ -34,7 +34,7 @@
 [looklook](https://github.com/xinghongfei/LookLook)参考了他的网易API。<br>
 ## End:<br>
 如果该项目对您有帮助，帮忙点个star吧。<br>
-作者还会努力更新带来更多的技术点。
+作者还会努力更新，带来更多的技术点。
 ## About me:<br>
 * QQ: 502325525
 * 简书: http://www.jianshu.com/p/04f4d4d1c424
