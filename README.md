@@ -1,7 +1,7 @@
 # 易读
 模仿网易云音乐UI，用知乎和gankio 网易新闻 豆瓣电影的API来完成一个基于Material Design +Rxjava + Retrofit + dagger2 + MVP构架的项目<br>
 <br>为了更好的学习Material Design和主流框架，于是有了该项目。
-<br>[APP下载地址](https://fir.im/4hfb?release_id=58eadf64548b7a2433000006)大家觉得项目构建慢的话，可以先下载来玩玩看，支持5.0以上，本项目可以支持4.0以上不过部分动画会失效，如果要用4.0-5.0的自己去gradle里面修改。
+
 ## Screenshots
 ![](https://github.com/laotan7237/EasyReader/blob/master/imagefile/home.png)
 ![](https://github.com/laotan7237/EasyReader/blob/master/imagefile/zhihudetail.png)
