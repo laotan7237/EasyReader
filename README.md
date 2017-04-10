@@ -24,7 +24,7 @@
 * BaseRecyclerViewAdapterHelper+RecyclerView完成下拉刷新，上拉加载更多。
 * Glide做图片的处理和加载
 * 使用CoordinatorLayout + AppBarLayout + CollapsingToolbarLayout。
-
+* BaseActivity里面有抽取出，模仿微信的侧滑关闭的功能这个属于自定义控件。[电影详情页自定义控件](http://blog.csdn.net/laotan7237/article/details/60576755)，都是作者自己想出来的，值得学习的。
 ## Thanks
 ### API:<br>
 知乎日报  干货集中营API 豆瓣电影。<br>
