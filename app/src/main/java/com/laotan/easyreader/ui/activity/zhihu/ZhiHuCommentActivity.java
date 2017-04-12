@@ -68,9 +68,9 @@ public class ZhiHuCommentActivity extends BaseActivity{
             return;
         }
         mTitleList.add(String.format("短评论(%d)",shortNum));
-        mFragments.add(new ZhiHuCommentFragment(true));
+        mFragments.add(ZhiHuCommentFragment.getInstance(true));
         mTitleList.add(String.format("长评论(%d)", longNum));
-        mFragments.add(new ZhiHuCommentFragment(false));
+        mFragments.add(ZhiHuCommentFragment.getInstance(false));
     }
 
     public int getId() {

@@ -1,6 +1,8 @@
 package com.laotan.easyreader.presenter;
 
-import com.laotan.easyreader.http.LifeSubscription;
+import com.laotan.easyreader.bean.zhihu.HomeListBean;
+
+import java.util.List;
 
 /**
  * Created by quantan.liu on 2017/3/23.
@@ -9,8 +11,7 @@ import com.laotan.easyreader.http.LifeSubscription;
 
 public interface ZhiHuPresenter {
 
-    interface View extends LifeSubscription{
-        void refresh();
+    interface View extends BaseView<List<HomeListBean>>{
     }
 
     interface Presenter{

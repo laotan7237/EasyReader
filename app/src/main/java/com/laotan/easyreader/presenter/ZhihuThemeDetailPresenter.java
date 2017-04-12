@@ -2,7 +2,6 @@ package com.laotan.easyreader.presenter;
 
 import com.laotan.easyreader.bean.zhihu.SectionChildListBean;
 import com.laotan.easyreader.bean.zhihu.ThemeChildListBean;
-import com.laotan.easyreader.http.LifeSubscription;
 
 /**
  * Created by quantan.liu on 2017/3/27.
@@ -10,8 +9,7 @@ import com.laotan.easyreader.http.LifeSubscription;
 
 public interface ZhihuThemeDetailPresenter {
 
-    interface View extends LifeSubscription {
-        void refreshData(ThemeChildListBean data);
+    interface View extends BaseView<ThemeChildListBean> {
         void refreshSectionData(SectionChildListBean data);
     }
 

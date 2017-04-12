@@ -170,4 +170,5 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
             this.mCompositeSubscription.unsubscribe();
         }
     }
+
 }

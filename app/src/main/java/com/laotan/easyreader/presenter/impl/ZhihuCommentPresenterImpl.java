@@ -26,7 +26,7 @@ public class ZhihuCommentPresenterImpl extends BasePresenter<ZhihuCommentPresent
             @Override
             public void onResponse(CommentBean data) {
                 checkState(data.getComments());
-                mLifeSubscription.showRecyclerView(data.getComments());
+                mView.refreshView(data.getComments());
             }
         });
     }
@@ -35,7 +35,7 @@ public class ZhihuCommentPresenterImpl extends BasePresenter<ZhihuCommentPresent
             @Override
             public void onResponse(CommentBean data) {
                 checkState(data.getComments());
-                mLifeSubscription.showRecyclerView(data.getComments());
+                mView.refreshView(data.getComments());
             }
         });
     }

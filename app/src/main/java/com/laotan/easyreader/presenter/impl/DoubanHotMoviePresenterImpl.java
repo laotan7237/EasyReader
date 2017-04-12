@@ -24,7 +24,7 @@ public class DoubanHotMoviePresenterImpl extends BasePresenter<DoubanHotMoviePre
         invoke(mRetrofitDouBanUtils.fetchHotMovie(),new Callback<HotMovieBean>(){
             @Override
             public void onResponse(HotMovieBean data) {
-                mLifeSubscription.refreshView(data);
+                mView.refreshView(data);
             }
         });
     }

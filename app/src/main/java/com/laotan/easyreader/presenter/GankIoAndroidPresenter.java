@@ -1,7 +1,6 @@
 package com.laotan.easyreader.presenter;
 
 import com.laotan.easyreader.bean.gankio.GankIoDataBean;
-import com.laotan.easyreader.http.LifeSubscription;
 
 import java.util.List;
 
@@ -11,8 +10,7 @@ import java.util.List;
 
 public interface GankIoAndroidPresenter {
 
-    interface View extends LifeSubscription {
-        void refreshView(List<GankIoDataBean.ResultBean> data);
+    interface View extends BaseView<List<GankIoDataBean.ResultBean>> {
     }
 
     interface Presenter{

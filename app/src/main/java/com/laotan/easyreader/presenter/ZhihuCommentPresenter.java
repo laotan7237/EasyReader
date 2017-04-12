@@ -1,7 +1,6 @@
 package com.laotan.easyreader.presenter;
 
 import com.laotan.easyreader.bean.zhihu.CommentBean;
-import com.laotan.easyreader.http.LifeSubscription;
 
 import java.util.List;
 
@@ -11,8 +10,7 @@ import java.util.List;
 
 public interface ZhihuCommentPresenter {
 
-    interface View extends LifeSubscription {
-        void showRecyclerView(List<CommentBean.CommentsBean> list);
+    interface View extends BaseView<List<CommentBean.CommentsBean>> {
     }
 
     interface Presenter{

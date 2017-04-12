@@ -1,7 +1,6 @@
 package com.laotan.easyreader.presenter;
 
 import com.laotan.easyreader.bean.wechat.WXItemBean;
-import com.laotan.easyreader.http.LifeSubscription;
 
 import java.util.List;
 
@@ -10,8 +9,7 @@ import java.util.List;
  */
 
 public interface WeChatPresenter {
-    interface View extends LifeSubscription {
-       void refreshView(List<WXItemBean> data);
+    interface View extends BaseView<List<WXItemBean>> {
     }
 
     interface Presenter {

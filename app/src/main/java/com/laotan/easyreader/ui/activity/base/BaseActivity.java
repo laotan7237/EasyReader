@@ -12,6 +12,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.Window;
 
+import com.laotan.easyreader.R;
 import com.laotan.easyreader.http.LifeSubscription;
 
 import java.util.LinkedList;
@@ -126,7 +127,7 @@ public abstract class BaseActivity extends AppCompatActivity implements LifeSubs
     //下面的用于侧滑关闭Activity
     public void touchFinish() {
         super.finish();
-        //overridePendingTransition(R.anim.alpha_enter, R.anim.alpha_exit);
+        overridePendingTransition(R.anim.alpha_enter, R.anim.alpha_exit);
     }
 
     /**

@@ -26,7 +26,7 @@ public class DoubanMovieDetailPresenterImpl extends BasePresenter<DoubanMovieDet
         invoke(mRetrofitDouBanUtils.fetchMovieDetail(id),new Callback<MovieDetailBean>(){
             @Override
             public void onResponse(MovieDetailBean data) {
-                mLifeSubscription.refreshView(data);
+                mView.refreshView(data);
                 LogUtils.e("aaaaaMovieDetailBean"+data);
             }
         });

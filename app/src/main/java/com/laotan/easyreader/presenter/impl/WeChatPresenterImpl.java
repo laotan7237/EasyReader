@@ -30,7 +30,7 @@ public class WeChatPresenterImpl extends BasePresenter<WeChatPresenter.View> imp
             public void onResponse(WXHttpResponse<List<WXItemBean>> data) {
                 List<WXItemBean> newslist = data.getNewslist();
                 checkState(newslist);
-                mLifeSubscription.refreshView(newslist);
+                mView.refreshView(newslist);
             }
         });
     }
@@ -42,7 +42,7 @@ public class WeChatPresenterImpl extends BasePresenter<WeChatPresenter.View> imp
             public void onResponse(WXHttpResponse<List<WXItemBean>> data) {
                 List<WXItemBean> newslist = data.getNewslist();
                 checkState(newslist);
-                mLifeSubscription.refreshView(newslist);
+                mView.refreshView(newslist);
             }
         });
 

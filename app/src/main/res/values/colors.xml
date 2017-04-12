@@ -55,4 +55,10 @@
     <color name="colorLineItem">#FFDDDDDD</color>
     
     <color name="colorLatestRead">#ff9d00</color>
+
+
+    <color name="album_default_palette_color_dark">#ff343a49</color>
+    <color name="colorPrimaryDarkTheme">#ff343a49</color>
+    <color name="colorPrimaryDarkDarkTheme">#ff2a2e3a</color>
+    <color name="colorAccentDarkTheme">#ffffffff</color>
 </resources>

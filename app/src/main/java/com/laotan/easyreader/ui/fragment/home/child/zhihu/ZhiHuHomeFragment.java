@@ -84,8 +84,8 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
     }
 
     @Override
-    public void refresh() {
-        homeList = mPresenter.getHomeList();
+    public void refreshView(List<HomeListBean> mHomeList) {
+        homeList = mHomeList;
         List<DailyListBean.TopStoriesBean> topStoriesList = mPresenter.getTopStoriesList();
         if (homeList.size() == 12) {
             View footerView = getActivity().getLayoutInflater().inflate(R.layout.item_zhihu_footer, (ViewGroup) rvZhihu.getParent(), false);

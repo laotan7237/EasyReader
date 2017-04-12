@@ -14,16 +14,16 @@ import rx.Observable;
  * Created by quantan.liu on 2017/3/22.
  */
 
-public class BasePresenter<T extends LifeSubscription> {
+public class BasePresenter<T extends BaseView> {
 
-    protected T mLifeSubscription;
+    protected T mView;//指的是界面，也就是BaseFragment或者BaseActivity
 
     public void setLifeSubscription(LifeSubscription mLifeSubscription) {
-        this.mLifeSubscription = (T) mLifeSubscription;
+        this.mView = (T) mLifeSubscription;
     }
 
     protected <T> void invoke(Observable<T> observable, Callback<T> callback) {
-        HttpUtils.invoke(mLifeSubscription, observable, callback);
+        HttpUtils.invoke((LifeSubscription) mView, observable, callback);
     }
 
     /**
@@ -33,8 +33,8 @@ public class BasePresenter<T extends LifeSubscription> {
      */
     public void checkState(List list) {
         if (list.size() == 0) {
-            if (mLifeSubscription instanceof Stateful)
-                ((Stateful) mLifeSubscription).setState(AppConstants.STATE_EMPTY);
+            if (mView instanceof Stateful)
+                ((Stateful) mView).setState(AppConstants.STATE_EMPTY);
             return;
         }
     }

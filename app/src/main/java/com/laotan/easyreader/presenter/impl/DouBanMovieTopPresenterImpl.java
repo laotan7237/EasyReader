@@ -28,7 +28,7 @@ public class DouBanMovieTopPresenterImpl extends BasePresenter<DouBanMovieTopPre
             public void onResponse(HotMovieBean data) {
                 checkState(data.getSubjects());
                 LogUtils.e("aaaaaHotMovieBean"+data);
-                mLifeSubscription.refreshView(data);
+                mView.refreshView(data);
             }
 
             /**
@@ -43,7 +43,7 @@ public class DouBanMovieTopPresenterImpl extends BasePresenter<DouBanMovieTopPre
                 }
                 if (!NetworkUtils.isAvailableByPing()) {
                     ToastUtils.showShortToast("你连接的网络有问题，请检查路由器");
-                    mLifeSubscription.showLoadMoreError();
+                    mView.showLoadMoreError();
                     return;
                 }
                 ToastUtils.showShortToast("程序员哥哥偷懒去了，快去举报他");

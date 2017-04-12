@@ -121,7 +121,7 @@ public class ZhihuThemeActivity extends ZhihuThemeBaseActivity<ZhihuThemeDetailP
     }
 
     @Override
-    public void refreshData(ThemeChildListBean data) {
+    public void refreshView(ThemeChildListBean data) {
         storiesList = data.getStories();
         zhihuThemeAdapter.setNewData(storiesList);
         zhihuThemeAdapter.notifyDataSetChanged();

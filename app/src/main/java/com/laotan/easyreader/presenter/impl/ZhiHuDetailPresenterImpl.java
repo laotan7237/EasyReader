@@ -25,7 +25,7 @@ public class ZhiHuDetailPresenterImpl extends BasePresenter<ZhiHuDetailPresenter
         invoke(mRetrofitZhiHuUtils.fetchDetailInfo(id),new Callback<ZhihuDetailBean>(){
             @Override
             public void onResponse(ZhihuDetailBean data) {
-                mLifeSubscription.showContent(data);
+                mView.refreshView(data);
             }
         });
     }
@@ -35,7 +35,7 @@ public class ZhiHuDetailPresenterImpl extends BasePresenter<ZhiHuDetailPresenter
         invoke(mRetrofitZhiHuUtils.fetchDetailExtraInfo(id),new Callback<DetailExtraBean>(){
             @Override
             public void onResponse(DetailExtraBean data) {
-                mLifeSubscription.showExtraInfo(data);
+                mView.showExtraInfo(data);
             }
         });
     }

@@ -27,8 +27,11 @@ public class ZhiHuCommentFragment extends BaseFragment<ZhihuCommentPresenterImpl
     RecyclerView rvZhihuComment;
 
     private boolean isShort;
-    public ZhiHuCommentFragment( boolean isShort) {
-        this.isShort = isShort;
+
+    public static ZhiHuCommentFragment getInstance(boolean isShort) {
+        ZhiHuCommentFragment instance = new ZhiHuCommentFragment();
+        instance.isShort = isShort;
+        return instance;
     }
 
     @Override
@@ -61,8 +64,9 @@ public class ZhiHuCommentFragment extends BaseFragment<ZhihuCommentPresenterImpl
     }
 
 
+
     @Override
-    public void showRecyclerView(List<CommentBean.CommentsBean> list) {
+    public void refreshView(List<CommentBean.CommentsBean> list) {
         mAdapter.setNewData(list);
         rvZhihuComment.setAdapter(mAdapter);
     }

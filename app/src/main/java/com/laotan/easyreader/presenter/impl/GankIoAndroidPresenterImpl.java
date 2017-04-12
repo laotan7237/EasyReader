@@ -1,6 +1,5 @@
 package com.laotan.easyreader.presenter.impl;
 
-import com.blankj.utilcode.utils.LogUtils;
 import com.laotan.easyreader.bean.gankio.GankIoDataBean;
 import com.laotan.easyreader.http.utils.Callback;
 import com.laotan.easyreader.http.utils.RetrofitGankIoUtils;
@@ -31,7 +30,7 @@ public class GankIoAndroidPresenterImpl extends BasePresenter<GankIoAndroidPrese
             public void onResponse(GankIoDataBean data) {
                 List<GankIoDataBean.ResultBean> results = data.getResults();
                 checkState(results);
-                mLifeSubscription.refreshView(results);
+                mView.refreshView(results);
             }
         });
     }

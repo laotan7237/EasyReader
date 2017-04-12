@@ -119,14 +119,14 @@ public class ZhiHuDetailActivity extends ZhihuDetailBaseActivity<ZhiHuDetailPres
     }
 
     @Override
-    public void showContent(ZhihuDetailBean zhihuDetailBean) {
+    public void refreshView(ZhihuDetailBean zhihuDetailBean) {
         imgUrl = zhihuDetailBean.getImage();
         shareUrl = zhihuDetailBean.getShare_url();
         if (isNotTransition) {
-            GlideUtils.load(this, zhihuDetailBean.getImage(), detailBarImage);
+            GlideUtils.loadDetailImg(this, zhihuDetailBean.getImage(), detailBarImage);
         } else {
             if (!isImageShow && isTransitionEnd) {
-                GlideUtils.load(this, zhihuDetailBean.getImage(), detailBarImage);
+                GlideUtils.loadDetailImg(this, zhihuDetailBean.getImage(), detailBarImage);
             }
         }
         toolbarZhihuDetail.setTitle(zhihuDetailBean.getTitle());

@@ -1,6 +1,5 @@
 package com.laotan.easyreader.presenter.impl;
 
-import com.blankj.utilcode.utils.LogUtils;
 import com.laotan.easyreader.app.AppConstants;
 import com.laotan.easyreader.bean.topnews.NewsDetailBean;
 import com.laotan.easyreader.bean.topnews.NewsListBean;
@@ -33,7 +32,7 @@ public class TopNewsPresenterImpl  extends BasePresenter<TopNewsPresenter.View> 
             @Override
             public void onResponse(NewsListBean data) {
                 checkState(data.getNewsList());
-                mLifeSubscription.refreshView(data);
+                mView.refreshView(data);
             }
         });
     }
@@ -44,11 +43,11 @@ public class TopNewsPresenterImpl  extends BasePresenter<TopNewsPresenter.View> 
             @Override
             public void onSuccess(String response) {
                 if (response==null){
-                    if (mLifeSubscription instanceof Stateful)
-                        ((Stateful) mLifeSubscription).setState(AppConstants.STATE_EMPTY);
+                    if (mView instanceof Stateful)
+                        ((Stateful) mView).setState(AppConstants.STATE_EMPTY);
                 }
                 NewsDetailBean newsDetailBean = NewsJsonUtils.readJsonNewsDetailBeans(response, docid);
-                ((TopNewsPresenter.ViewActivity)mLifeSubscription).refreshActivityView(newsDetailBean);
+                ((TopNewsPresenter.ViewActivity) mView).refreshActivityView(newsDetailBean);
             }
 
             @Override

@@ -195,7 +195,7 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
                 HomeListBean homeListBean = settype(4);
                 homeListBean.setSectionList(sectionList);
                 homeList.add(homeListBean);
-                mLifeSubscription.refresh();
+                mView.refreshView(getHomeList());
             }
         });
     }

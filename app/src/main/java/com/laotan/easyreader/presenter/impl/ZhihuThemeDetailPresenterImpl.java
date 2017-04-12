@@ -26,7 +26,7 @@ public class ZhihuThemeDetailPresenterImpl extends BasePresenter<ZhihuThemeDetai
         invoke(mRetrofitZhiHuUtils.fetchThemeChildList(id),new Callback<ThemeChildListBean>(){
             @Override
             public void onResponse(ThemeChildListBean data) {
-                mLifeSubscription.refreshData(data);
+                mView.refreshView(data);
             }
         });
     }
@@ -36,7 +36,7 @@ public class ZhihuThemeDetailPresenterImpl extends BasePresenter<ZhihuThemeDetai
         invoke(mRetrofitZhiHuUtils.fetchSectionChildList(id),new Callback<SectionChildListBean>(){
             @Override
             public void onResponse(SectionChildListBean data) {
-                mLifeSubscription.refreshSectionData(data);
+                mView.refreshSectionData(data);
             }
         });
     }
