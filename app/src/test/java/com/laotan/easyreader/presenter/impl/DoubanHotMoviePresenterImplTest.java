@@ -1,7 +1,5 @@
 package com.laotan.easyreader.presenter.impl;
 
-import com.laotan.easyreader.app.App;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +13,7 @@ public class DoubanHotMoviePresenterImplTest {
 
     @Test
     public void fetchHotMovie() throws Exception {
-        App.getAppComponent().mRetrofitDouBanUtils().fetchHotMovie();
+//        App.getAppComponent().mRetrofitDouBanUtils().fetchHotMovie();
     }
 
 }

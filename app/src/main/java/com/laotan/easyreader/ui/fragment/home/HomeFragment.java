@@ -1,32 +1,28 @@
-package com.laotan.easyreader.ui.fragment;
+package com.laotan.easyreader.ui.fragment.home;
 
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.laotan.easyreader.R;
 import com.laotan.easyreader.adapter.HomeFragmentPageAdapter;
+import com.laotan.easyreader.app.AppConstants;
+import com.laotan.easyreader.ui.fragment.BaseFragment;
 import com.laotan.easyreader.ui.fragment.home.child.DouBanMovieLatestFragment;
 import com.laotan.easyreader.ui.fragment.home.child.DouBanMovieTopFragment;
-import com.laotan.easyreader.ui.fragment.home.child.zhihu.ZhiHuHomeFragment;
 import com.laotan.easyreader.ui.fragment.home.child.TopNewsFragment;
+import com.laotan.easyreader.ui.fragment.home.child.zhihu.ZhiHuHomeFragment;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by quantan.liu on 2017/3/22.
  */
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.tab_gank)
     TabLayout tabGank;
@@ -36,27 +32,29 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> mTitleList = new ArrayList<>(4);
     private ArrayList<Fragment> mFragments = new ArrayList<>(4);
     private HomeFragmentPageAdapter myAdapter;
-    private View inflate;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (inflate == null) {
-            inflate = inflater.inflate(R.layout.fragment_gank, null);
-            ButterKnife.bind(this, inflate);
-        }
-        return inflate;
+    protected void loadData() {
+        setState(AppConstants.STATE_SUCCESS);
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected int getLayoutId() {
+        return R.layout.fragment_gank;
+    }
+
+    @Override
+    protected void initView() {
         initFragmentList();
         myAdapter = new HomeFragmentPageAdapter(getChildFragmentManager(), mFragments, mTitleList);
         vpGank.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
         tabGank.setTabMode(TabLayout.MODE_FIXED);
         tabGank.setupWithViewPager(vpGank);
+    }
+
+    @Override
+    protected void initInject() {
     }
 
     private void initFragmentList() {

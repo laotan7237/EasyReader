@@ -38,7 +38,6 @@ public class NewsListBean {
         /**
          * 标题
          */
-        @SerializedName("title")
         private String title;
         /**
          * 小内容

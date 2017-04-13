@@ -59,6 +59,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/HalfTranslucent" />
         <activity
+            android:name=".ui.activity.topnews.NBAActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HalfTranslucent" />
+        <activity
             android:name=".ui.activity.douban.MovieTopDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HalfTranslucent" />

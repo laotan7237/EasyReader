@@ -26,9 +26,9 @@ import com.laotan.easyreader.injector.component.DaggerActivityComponent;
 import com.laotan.easyreader.injector.module.ActivityModule;
 import com.laotan.easyreader.rx.RxBus;
 import com.laotan.easyreader.ui.activity.base.BaseActivity;
-import com.laotan.easyreader.ui.fragment.HomeFragment;
 import com.laotan.easyreader.ui.fragment.gank.AndroidFragment;
-import com.laotan.easyreader.ui.fragment.wechat.WeChatFragment;
+import com.laotan.easyreader.ui.fragment.home.HomeFragment;
+import com.laotan.easyreader.ui.fragment.wechat.RightFragment;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
@@ -145,7 +145,7 @@ public class MainActivity extends BaseActivity {
         List<Fragment> mFragmentList = new ArrayList<>();
         mFragmentList.add(new AndroidFragment());
         mFragmentList.add(new HomeFragment());
-        mFragmentList.add(new WeChatFragment());
+        mFragmentList.add(new RightFragment());
         vpContent.setAdapter(new HomeFragmentPageAdapter(getSupportFragmentManager(), mFragmentList));
         vpContent.setCurrentItem(1);
         vpContent.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

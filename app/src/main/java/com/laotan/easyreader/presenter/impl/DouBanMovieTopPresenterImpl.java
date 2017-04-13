@@ -1,6 +1,5 @@
 package com.laotan.easyreader.presenter.impl;
 
-import com.blankj.utilcode.utils.LogUtils;
 import com.blankj.utilcode.utils.NetworkUtils;
 import com.blankj.utilcode.utils.ToastUtils;
 import com.laotan.easyreader.bean.douban.HotMovieBean;
@@ -24,12 +23,6 @@ public class DouBanMovieTopPresenterImpl extends BasePresenter<DouBanMovieTopPre
     }
     public void fetchMovieTop250(final int start, int count){
         invoke(mRetrofitDouBanUtils.fetchMovieTop250(start,count),new Callback<HotMovieBean>(){
-            @Override
-            public void onResponse(HotMovieBean data) {
-                checkState(data.getSubjects());
-                LogUtils.e("aaaaaHotMovieBean"+data);
-                mView.refreshView(data);
-            }
 
             /**
              * 错误我们基本上采用统一处理，直接整个界面切换成错误界面，如果想在下拉

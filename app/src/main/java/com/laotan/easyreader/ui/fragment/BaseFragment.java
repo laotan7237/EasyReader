@@ -108,7 +108,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     protected void onVisible() {
         if (isFirst) {
             initInject();
-            mPresenter.setLifeSubscription(this);
+            if (mPresenter!=null){
+            mPresenter.setLifeSubscription(this);}
         }
         loadBaseData();//根据获取的数据来调用showView()切换界面
     }

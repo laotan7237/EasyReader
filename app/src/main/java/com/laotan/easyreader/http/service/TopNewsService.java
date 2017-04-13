@@ -1,5 +1,7 @@
 package com.laotan.easyreader.http.service;
 
+import com.laotan.easyreader.bean.topnews.NBADetailBean;
+import com.laotan.easyreader.bean.topnews.NBAListBean;
 import com.laotan.easyreader.bean.topnews.NewsListBean;
 
 import retrofit2.http.GET;
@@ -14,8 +16,15 @@ public interface TopNewsService {
     String API_TOPNEWS = "http://c.m.163.com/nc/article/";
 
     @GET("headline/T1348647909107/{id}-20.html")
-    Observable<NewsListBean> getNews(@Path("id") int id );
+    Observable<NewsListBean> getNews(@Path("id") int id);
 
+    //   http://c.m.163.com/nc/article/list/T1348649145984/0-20.html
+    @GET("list/T1348649145984/{id}-20.html")
+    Observable<NBAListBean> getNBA(@Path("id") int id);
 
+    //    http://c.m.163.com/nc/article/CHTLBV3C0005877U/full.html
+    @GET("{postId}/full.html")
+    Observable<NBADetailBean> getNewDetail(
+            @Path("postId") String postId);
 
 }

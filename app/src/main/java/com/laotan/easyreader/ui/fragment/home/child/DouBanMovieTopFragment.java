@@ -42,6 +42,7 @@ public class DouBanMovieTopFragment extends BaseFragment<DouBanMovieTopPresenter
     @Override
     public void refreshView(HotMovieBean data) {
         subjectsList = data.getSubjects();
+        mPresenter.checkState(subjectsList);
         mAdapter.addData(subjectsList);
         mCurrentCounter = mAdapter.getData().size();
         mAdapter.loadMoreComplete();

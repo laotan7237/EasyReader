@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.laotan.easyreader.R;
-import com.laotan.easyreader.adapter.GankIoAndroidAdapter;
 import com.laotan.easyreader.bean.gankio.GankIoDataBean;
 import com.laotan.easyreader.injector.component.fragment.DaggerAndroidComponent;
 import com.laotan.easyreader.injector.module.fragment.AndroidModule;
@@ -51,7 +50,6 @@ public class AndroidFragment extends BaseFragment<GankIoAndroidPresenterImpl> im
             mAdapter.addData(data);
             mAdapter.loadMoreComplete();
         }
-
     }
 
     @Override

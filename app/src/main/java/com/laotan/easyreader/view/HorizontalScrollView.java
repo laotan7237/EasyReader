@@ -106,13 +106,13 @@ public class HorizontalScrollView extends ViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         childCount = getChildCount();
-        if (childCount < 3) {
-            try {
-                throw new Exception("HorizontalScrollView必须有3个或者3个以上的子View");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//        if (childCount < 3) {
+//            try {
+//                throw new Exception("HorizontalScrollView必须有3个或者3个以上的子View");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
         childLeftLeft = halfWindowWidth;
         childRightLeft = halfWindowWidth;
         childHalfCount = childCount / 2;
@@ -149,6 +149,9 @@ public class HorizontalScrollView extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (getChildCount()<=3){
+            return true;
+        }
         mVelocityTracker.addMovement(event);
         startX = (int) event.getRawX();
         switch (event.getAction()) {

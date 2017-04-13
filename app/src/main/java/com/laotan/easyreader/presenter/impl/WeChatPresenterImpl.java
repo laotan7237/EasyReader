@@ -45,7 +45,6 @@ public class WeChatPresenterImpl extends BasePresenter<WeChatPresenter.View> imp
                 mView.refreshView(newslist);
             }
         });
-
     }
 
 
