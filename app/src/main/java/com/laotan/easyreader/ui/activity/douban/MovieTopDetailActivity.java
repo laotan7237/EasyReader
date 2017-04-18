@@ -114,7 +114,7 @@ public class MovieTopDetailActivity extends LoadingBaseActivity<DoubanMovieDetai
         appbarMovieTopChild.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (appbarMovieTopChild.getBottom() >= toolbarDoubanDetail.getBottom() + ConvertUtils.px2dp(27)) {
+                if (appbarMovieTopChild.getBottom() > toolbarDoubanDetail.getBottom() ) {
                     toolbarDoubanDetail.setBackgroundColor(getResources().getColor(R.color.translucent));
                 } else {
                     toolbarDoubanDetail.setBackgroundResource(R.color.colorTheme);

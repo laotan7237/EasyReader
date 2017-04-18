@@ -8,7 +8,7 @@
     <!--大家在看这个效果之前一定要看下面这个链接，看完了基本就明白怎么用的了
     windows按住ctrl+鼠标左键点击下面链接 mac菊花++鼠标左键点击下面链接-->
     <!--http://blog.csdn.net/qq_31340657/article/details/51918773-->
-    <!--http://www.jianshu.com/p/06c0ae8d9a96-->
+    <!--http://www.jianshu.com/p/06c0ae8d9a96 -->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
            -->
 
             <ImageView
-                android:layout_marginTop="-27dp"
+                android:fitsSystemWindows="true"
                 android:id="@+id/detail_bar_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -21,7 +21,7 @@
                 app:expandedTitleMarginEnd="10dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
                 <RelativeLayout
-                    android:layout_marginTop="-27dp"
+                    android:fitsSystemWindows="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_collapseMode="parallax"

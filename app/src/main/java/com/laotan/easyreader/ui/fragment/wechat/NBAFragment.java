@@ -16,7 +16,7 @@ import com.laotan.easyreader.injector.module.fragment.NBAModule;
 import com.laotan.easyreader.injector.module.http.TopNewsHttpModule;
 import com.laotan.easyreader.presenter.NBAPresenter;
 import com.laotan.easyreader.presenter.impl.NBAPresenterImpl;
-import com.laotan.easyreader.ui.activity.topnews.TopNewsActivity;
+import com.laotan.easyreader.ui.activity.topnews.NBAActivity;
 import com.laotan.easyreader.ui.fragment.BaseFragment;
 import com.laotan.easyreader.view.EasyLoadMoreView;
 
@@ -63,14 +63,14 @@ public class NBAFragment extends BaseFragment<NBAPresenterImpl> implements NBAPr
         ((NBAAdapter)mAdapter).setOnItemClickListener(new NBAAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(String id, String imgUrl, View view) {
-                startZhiHuDetailActivity(id, imgUrl, view);
+                startNBADetailActivity(id, imgUrl, view);
             }
         });
     }
 
-    private void startZhiHuDetailActivity(String id, String imgUrl, View view) {
+    private void startNBADetailActivity(String id, String imgUrl, View view) {
         Intent intent = new Intent();
-        intent.setClass(getActivity(), TopNewsActivity.class);
+        intent.setClass(getActivity(), NBAActivity.class);
         intent.putExtra("id", id);
         intent.putExtra("url", imgUrl);
         /**

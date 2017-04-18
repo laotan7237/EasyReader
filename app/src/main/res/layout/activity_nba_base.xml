@@ -28,11 +28,11 @@
                 android:layout_marginTop="-27dp"
                 android:transitionName="@string/zhihu_detail_title"
                 android:scaleType="fitXY" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:background="@drawable/bottom_black_bg" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="bottom"-->
+                <!--android:background="@drawable/bottom_black_bg" />-->
 
             <TextView
                 android:id="@+id/detail_bar_copyright"
@@ -53,6 +53,15 @@
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_nba"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="@dimen/dp_10"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_anchor="@id/app_bar"
+        android:src="@drawable/share"
+        />
 
     <FrameLayout
         android:id="@+id/fl_base_content"
