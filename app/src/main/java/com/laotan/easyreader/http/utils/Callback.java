@@ -19,6 +19,12 @@ public class Callback<T> extends Subscriber<T> {
         this.target = target;
     }
 
+    public void detachView() {
+        if (target != null) {
+            target = null;
+        }
+    }
+
     @Override
     public void onCompleted() {
 

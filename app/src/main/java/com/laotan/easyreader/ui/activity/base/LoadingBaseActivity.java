@@ -3,7 +3,6 @@ package com.laotan.easyreader.ui.activity.base;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.laotan.easyreader.http.Stateful;
 import com.laotan.easyreader.presenter.BasePresenter;
 import com.laotan.easyreader.view.LoadingPage;
@@ -30,7 +29,7 @@ public abstract class LoadingBaseActivity<T extends BasePresenter> extends BaseA
         super.onCreate(savedInstanceState);
         initUI();
         initInject();
-        mPresenter.setLifeSubscription(this);
+        mPresenter.attachView(this);
         flBaseContent = (FrameLayout) findViewById(setFrameLayoutId());
         if (mLoadingPage == null) {
             mLoadingPage = new LoadingPage(this) {
@@ -61,6 +60,9 @@ public abstract class LoadingBaseActivity<T extends BasePresenter> extends BaseA
         super.onDestroy();
         if (bind != null) {
             bind.unbind();
+        }
+        if (mPresenter!=null){
+            mPresenter.detachView();
         }
     }
 

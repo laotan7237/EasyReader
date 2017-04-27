@@ -109,7 +109,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         if (isFirst) {
             initInject();
             if (mPresenter!=null){
-            mPresenter.setLifeSubscription(this);}
+            mPresenter.attachView(this);}
         }
         loadBaseData();//根据获取的数据来调用showView()切换界面
     }
@@ -169,6 +169,9 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         }
         if (this.mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
             this.mCompositeSubscription.unsubscribe();
+        }
+        if (mPresenter!=null){
+            mPresenter.detachView();
         }
     }
 

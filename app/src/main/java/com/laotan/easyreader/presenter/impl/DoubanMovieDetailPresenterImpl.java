@@ -1,6 +1,5 @@
 package com.laotan.easyreader.presenter.impl;
 
-import com.blankj.utilcode.utils.LogUtils;
 import com.laotan.easyreader.bean.douban.MovieDetailBean;
 import com.laotan.easyreader.http.utils.Callback;
 import com.laotan.easyreader.http.utils.RetrofitDouBanUtils;
