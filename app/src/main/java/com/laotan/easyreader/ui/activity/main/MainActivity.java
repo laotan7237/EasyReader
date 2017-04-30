@@ -79,7 +79,7 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.fl_setting)
     public void setting() {
-        ToastUtils.showShortToast("设置暂时还没有开发");
+        ToastUtils.showShortToast("设置暂时还没有开发哦");
     }
 
     @OnClick(R.id.fl_theme_color)
