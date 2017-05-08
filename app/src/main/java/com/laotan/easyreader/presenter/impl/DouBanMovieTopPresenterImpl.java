@@ -3,8 +3,8 @@ package com.laotan.easyreader.presenter.impl;
 import com.blankj.utilcode.utils.NetworkUtils;
 import com.blankj.utilcode.utils.ToastUtils;
 import com.laotan.easyreader.bean.douban.HotMovieBean;
+import com.laotan.easyreader.http.service.DoubanService;
 import com.laotan.easyreader.http.utils.Callback;
-import com.laotan.easyreader.http.utils.RetrofitDouBanUtils;
 import com.laotan.easyreader.presenter.BasePresenter;
 import com.laotan.easyreader.presenter.DouBanMovieTopPresenter;
 
@@ -15,14 +15,14 @@ import javax.inject.Inject;
  */
 
 public class DouBanMovieTopPresenterImpl extends BasePresenter<DouBanMovieTopPresenter.View> implements DouBanMovieTopPresenter.Presenter {
-    private RetrofitDouBanUtils mRetrofitDouBanUtils;
+    private DoubanService mDoubanService;
 
     @Inject
-    public DouBanMovieTopPresenterImpl(RetrofitDouBanUtils mRetrofitDouBanUtils) {
-        this.mRetrofitDouBanUtils = mRetrofitDouBanUtils;
+    public DouBanMovieTopPresenterImpl(DoubanService mDoubanService) {
+        this.mDoubanService = mDoubanService;
     }
     public void fetchMovieTop250(final int start, int count){
-        invoke(mRetrofitDouBanUtils.fetchMovieTop250(start,count),new Callback<HotMovieBean>(){
+        invoke(mDoubanService.fetchMovieTop250(start,count),new Callback<HotMovieBean>(){
 
             /**
              * 错误我们基本上采用统一处理，直接整个界面切换成错误界面，如果想在下拉

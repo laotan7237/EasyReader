@@ -1,8 +1,7 @@
 package com.laotan.easyreader.injector.module.http;
 
-import com.laotan.easyreader.injector.qualifier.DoubanUrl;
 import com.laotan.easyreader.http.service.DoubanService;
-import com.laotan.easyreader.http.utils.RetrofitDouBanUtils;
+import com.laotan.easyreader.injector.qualifier.DoubanUrl;
 
 import javax.inject.Singleton;
 
@@ -29,9 +28,5 @@ public class DoubanHttpModule extends BaseHttpModule {
     DoubanService provideDoubanService(@DoubanUrl Retrofit retrofit) {
         return retrofit.create(DoubanService.class);
     }
-    @Provides
-    @Singleton
-    RetrofitDouBanUtils provideRetrofitDouBanUtils(DoubanService doubanService) {
-        return new RetrofitDouBanUtils(doubanService);
-    }
+
 }

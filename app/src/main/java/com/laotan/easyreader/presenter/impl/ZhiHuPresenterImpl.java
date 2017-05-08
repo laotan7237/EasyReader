@@ -9,8 +9,8 @@ import com.laotan.easyreader.bean.zhihu.HomeListBean;
 import com.laotan.easyreader.bean.zhihu.HotListBean;
 import com.laotan.easyreader.bean.zhihu.SectionListBean;
 import com.laotan.easyreader.bean.zhihu.ThemeListBean;
+import com.laotan.easyreader.http.service.ZhiHuService;
 import com.laotan.easyreader.http.utils.Callback;
-import com.laotan.easyreader.http.utils.RetrofitZhiHuUtils;
 import com.laotan.easyreader.presenter.BasePresenter;
 import com.laotan.easyreader.presenter.ZhiHuPresenter;
 
@@ -29,11 +29,12 @@ import javax.inject.Inject;
  */
 
 public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> implements ZhiHuPresenter.Presenter {
-    private RetrofitZhiHuUtils mRetrofitZhiHuUtils;
+    private ZhiHuService mZhiHuService;
+
 
     @Inject
-    public ZhiHuPresenterImpl(RetrofitZhiHuUtils mRetrofitZhiHuUtils) {
-        this.mRetrofitZhiHuUtils = mRetrofitZhiHuUtils;
+    public ZhiHuPresenterImpl(ZhiHuService mZhiHuService) {
+        this.mZhiHuService = mZhiHuService;
     }
 
     private List<HomeListBean> homeList = new ArrayList<>();
@@ -111,7 +112,7 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
     }
 
     public void fetchDailyData() {
-        invoke(mRetrofitZhiHuUtils.fetchDailyListInfo(), new Callback<DailyListBean>() {
+        invoke(mZhiHuService.fetchDailyList(), new Callback<DailyListBean>() {
             @Override
             public void onResponse(DailyListBean data) {
                 topStoriesList = data.getTop_stories();
@@ -128,7 +129,7 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
     }
 
     public void fetchHotList() {
-        invoke(mRetrofitZhiHuUtils.fetchHotList(), new Callback<HotListBean>() {
+        invoke(mZhiHuService.fetchHotList(), new Callback<HotListBean>() {
             @Override
             public void onResponse(HotListBean data) {
                 List<HotListBean.RecentBean> recent = data.getRecent();
@@ -155,7 +156,7 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
 
 
     public void fetchThemeList() {
-        invoke(mRetrofitZhiHuUtils.fetchThemeList(), new Callback<ThemeListBean>() {
+        invoke(mZhiHuService.fetchThemeList(), new Callback<ThemeListBean>() {
             @Override
             public void onResponse(ThemeListBean data) {
                 List<ThemeListBean.OthersBean> others = data.getOthers();
@@ -182,7 +183,7 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
     }
 
     public void fetchSectionList() {
-        invoke(mRetrofitZhiHuUtils.fetchSectionList(), new Callback<SectionListBean>() {
+        invoke(mZhiHuService.fetchSectionList(), new Callback<SectionListBean>() {
             @Override
             public void onResponse(SectionListBean data) {
                 List<SectionListBean.DataBean> data1 = data.getData();

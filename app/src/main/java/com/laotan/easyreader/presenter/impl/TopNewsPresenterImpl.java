@@ -4,8 +4,8 @@ import com.laotan.easyreader.app.AppConstants;
 import com.laotan.easyreader.bean.topnews.NewsDetailBean;
 import com.laotan.easyreader.bean.topnews.NewsListBean;
 import com.laotan.easyreader.http.Stateful;
+import com.laotan.easyreader.http.service.TopNewsService;
 import com.laotan.easyreader.http.utils.Callback;
-import com.laotan.easyreader.http.utils.RetrofitTopNewsUtils;
 import com.laotan.easyreader.presenter.BasePresenter;
 import com.laotan.easyreader.presenter.TopNewsPresenter;
 import com.laotan.easyreader.utils.NewsJsonUtils;
@@ -18,17 +18,17 @@ import javax.inject.Inject;
  */
 
 public class TopNewsPresenterImpl  extends BasePresenter<TopNewsPresenter.View> implements TopNewsPresenter.Presenter {
-    private RetrofitTopNewsUtils mRetrofitTopNewsUtils;
+    private TopNewsService mTopNewsService;
 
     @Inject
-    public TopNewsPresenterImpl(RetrofitTopNewsUtils mRetrofitTopNewsUtils) {
-        this.mRetrofitTopNewsUtils = mRetrofitTopNewsUtils;
+    public TopNewsPresenterImpl(TopNewsService mTopNewsService) {
+        this.mTopNewsService = mTopNewsService;
     }
 
 
     @Override
     public void fetchTopNewsList(int id) {
-        invoke(mRetrofitTopNewsUtils.fetchTopNewsList(id),new Callback<NewsListBean>(){
+        invoke(mTopNewsService.fetchNews(id),new Callback<NewsListBean>(){
             @Override
             public void onResponse(NewsListBean data) {
                 checkState(data.getNewsList());

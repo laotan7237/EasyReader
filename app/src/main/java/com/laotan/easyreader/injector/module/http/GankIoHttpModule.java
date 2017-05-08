@@ -1,8 +1,7 @@
 package com.laotan.easyreader.injector.module.http;
 
-import com.laotan.easyreader.injector.qualifier.GankUrl;
 import com.laotan.easyreader.http.service.GankIoService;
-import com.laotan.easyreader.http.utils.RetrofitGankIoUtils;
+import com.laotan.easyreader.injector.qualifier.GankUrl;
 
 import javax.inject.Singleton;
 
@@ -29,9 +28,5 @@ public class GankIoHttpModule extends BaseHttpModule {
         return retrofit.create(GankIoService.class);
     }
 
-    @Provides
-    @Singleton
-    RetrofitGankIoUtils provideRetrofitGankIoUtils(GankIoService gankIoService) {
-        return new RetrofitGankIoUtils(gankIoService);
-    }
+
 }

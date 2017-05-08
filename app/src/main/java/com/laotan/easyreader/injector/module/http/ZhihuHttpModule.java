@@ -2,7 +2,6 @@ package com.laotan.easyreader.injector.module.http;
 
 import com.laotan.easyreader.injector.qualifier.ZhihuUrl;
 import com.laotan.easyreader.http.service.ZhiHuService;
-import com.laotan.easyreader.http.utils.RetrofitZhiHuUtils;
 
 import javax.inject.Singleton;
 
@@ -27,9 +26,5 @@ public class ZhihuHttpModule extends BaseHttpModule {
     ZhiHuService provideZhihuService(@ZhihuUrl Retrofit retrofit) {
         return retrofit.create(ZhiHuService.class);
     }
-    @Provides
-    @Singleton
-    RetrofitZhiHuUtils provideRetrofitZhiHuUtils(ZhiHuService zhihuApiService) {
-        return new RetrofitZhiHuUtils(zhihuApiService);
-    }
+
 }

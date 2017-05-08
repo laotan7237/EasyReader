@@ -1,8 +1,8 @@
 package com.laotan.easyreader.presenter.impl;
 
 import com.laotan.easyreader.bean.zhihu.CommentBean;
+import com.laotan.easyreader.http.service.ZhiHuService;
 import com.laotan.easyreader.http.utils.Callback;
-import com.laotan.easyreader.http.utils.RetrofitZhiHuUtils;
 import com.laotan.easyreader.presenter.BasePresenter;
 import com.laotan.easyreader.presenter.ZhihuCommentPresenter;
 
@@ -13,16 +13,16 @@ import javax.inject.Inject;
  */
 
 public class ZhihuCommentPresenterImpl extends BasePresenter<ZhihuCommentPresenter.View> implements ZhihuCommentPresenter.Presenter {
-    private RetrofitZhiHuUtils mRetrofitZhiHuUtils;
+    private ZhiHuService mZhiHuService;
 
     @Inject
-    public ZhihuCommentPresenterImpl(RetrofitZhiHuUtils mRetrofitZhiHuUtils) {
-        this.mRetrofitZhiHuUtils = mRetrofitZhiHuUtils;
+    public ZhihuCommentPresenterImpl(ZhiHuService mZhiHuService) {
+        this.mZhiHuService = mZhiHuService;
     }
 
 
     public void fetchLongCommentInfo(int id){
-        invoke(mRetrofitZhiHuUtils.fetchLongCommentInfo(id),new Callback<CommentBean>(){
+        invoke(mZhiHuService.fetchLongCommentInfo(id),new Callback<CommentBean>(){
             @Override
             public void onResponse(CommentBean data) {
                 checkState(data.getComments());
@@ -31,7 +31,7 @@ public class ZhihuCommentPresenterImpl extends BasePresenter<ZhihuCommentPresent
         });
     }
     public void fetchShortCommentInfo(int id){
-        invoke(mRetrofitZhiHuUtils.fetchShortCommentInfo(id),new Callback<CommentBean>(){
+        invoke(mZhiHuService.fetchShortCommentInfo(id),new Callback<CommentBean>(){
             @Override
             public void onResponse(CommentBean data) {
                 checkState(data.getComments());

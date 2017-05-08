@@ -1,8 +1,8 @@
 package com.laotan.easyreader.presenter.impl;
 
 import com.laotan.easyreader.bean.douban.MovieDetailBean;
+import com.laotan.easyreader.http.service.DoubanService;
 import com.laotan.easyreader.http.utils.Callback;
-import com.laotan.easyreader.http.utils.RetrofitDouBanUtils;
 import com.laotan.easyreader.presenter.BasePresenter;
 import com.laotan.easyreader.presenter.DoubanMovieDetailPresenter;
 
@@ -13,16 +13,16 @@ import javax.inject.Inject;
  */
 
 public class DoubanMovieDetailPresenterImpl extends BasePresenter<DoubanMovieDetailPresenter.View> implements DoubanMovieDetailPresenter.Presenter {
-    private RetrofitDouBanUtils mRetrofitDouBanUtils;
+    private DoubanService mDoubanService;
 
     @Inject
-    public DoubanMovieDetailPresenterImpl(RetrofitDouBanUtils mRetrofitDouBanUtils) {
-        this.mRetrofitDouBanUtils = mRetrofitDouBanUtils;
+    public DoubanMovieDetailPresenterImpl(DoubanService mDoubanService) {
+        this.mDoubanService = mDoubanService;
     }
 
     @Override
     public void fetchMovieDetail(String id) {
-        invoke(mRetrofitDouBanUtils.fetchMovieDetail(id),new Callback<MovieDetailBean>(){
+        invoke(mDoubanService.fetchMovieDetail(id),new Callback<MovieDetailBean>(){
         });
     }
 }

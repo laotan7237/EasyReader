@@ -6,6 +6,8 @@ import com.laotan.easyreader.http.Stateful;
 import com.laotan.easyreader.http.utils.Callback;
 import com.laotan.easyreader.http.utils.HttpUtils;
 
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 import rx.Observable;
@@ -16,12 +18,14 @@ import rx.Observable;
 
 public class BasePresenter<T extends BaseView> {
 
-    protected T mView;//指的是界面，也就是BaseFragment或者BaseActivity
+    protected Reference<T> mReferenceView;//指的是界面，也就是BaseFragment或者BaseActivity
 
+    protected T mView;
     private Callback callback;
 
     public void attachView(LifeSubscription mLifeSubscription) {
-        this.mView = (T) mLifeSubscription;
+        this.mReferenceView = new WeakReference<>((T) mLifeSubscription);
+        mView = mReferenceView.get();
     }
 
     protected <T> void invoke(Observable<T> observable, Callback<T> callback) {
@@ -44,6 +48,9 @@ public class BasePresenter<T extends BaseView> {
     }
 
     public void detachView() {
+        if (mReferenceView != null)
+            mReferenceView.clear();
+            mReferenceView = null;
         if (mView != null)
             mView = null;
         if (callback != null) {

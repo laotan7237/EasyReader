@@ -2,7 +2,6 @@ package com.laotan.easyreader.injector.module.http;
 
 import com.laotan.easyreader.injector.qualifier.TopNewsUrl;
 import com.laotan.easyreader.http.service.TopNewsService;
-import com.laotan.easyreader.http.utils.RetrofitTopNewsUtils;
 
 import javax.inject.Singleton;
 
@@ -28,9 +27,5 @@ public class TopNewsHttpModule extends BaseHttpModule {
     TopNewsService provideTopNewsService(@TopNewsUrl Retrofit retrofit) {
         return retrofit.create(TopNewsService.class);
     }
-    @Provides
-    @Singleton
-    RetrofitTopNewsUtils provideRetrofitTopNewsUtils(TopNewsService topNewsService) {
-        return new RetrofitTopNewsUtils(topNewsService);
-    }
+
 }

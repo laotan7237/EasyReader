@@ -1,9 +1,10 @@
 package com.laotan.easyreader.presenter.impl;
 
+import com.laotan.easyreader.app.AppConstants;
 import com.laotan.easyreader.bean.wechat.WXHttpResponse;
 import com.laotan.easyreader.bean.wechat.WXItemBean;
+import com.laotan.easyreader.http.service.WeChatService;
 import com.laotan.easyreader.http.utils.Callback;
-import com.laotan.easyreader.http.utils.RetrofitWeChatUtils;
 import com.laotan.easyreader.presenter.BasePresenter;
 import com.laotan.easyreader.presenter.WeChatPresenter;
 
@@ -16,16 +17,16 @@ import javax.inject.Inject;
  */
 
 public class WeChatPresenterImpl extends BasePresenter<WeChatPresenter.View> implements WeChatPresenter.Presenter {
-    private RetrofitWeChatUtils mRetrofitWeChatUtils;
+    private WeChatService mWeChatService;
 
     @Inject
-    public WeChatPresenterImpl(RetrofitWeChatUtils mRetrofitWeChatUtils) {
-        this.mRetrofitWeChatUtils = mRetrofitWeChatUtils;
+    public WeChatPresenterImpl(WeChatService mWeChatService) {
+        this.mWeChatService = mWeChatService;
     }
 
     @Override
     public void fetchWeChatHot(int num, int page) {
-        invoke(mRetrofitWeChatUtils.fetchWeChatHot(num, page), new Callback<WXHttpResponse<List<WXItemBean>>>() {
+        invoke(mWeChatService.fetchWXHot(AppConstants.KEY_API,num, page), new Callback<WXHttpResponse<List<WXItemBean>>>() {
             @Override
             public void onResponse(WXHttpResponse<List<WXItemBean>> data) {
                 List<WXItemBean> newslist = data.getNewslist();
@@ -37,7 +38,7 @@ public class WeChatPresenterImpl extends BasePresenter<WeChatPresenter.View> imp
 
     @Override
     public void fetchWXHotSearch(int num, int page, String word) {
-        invoke(mRetrofitWeChatUtils.fetchWXHotSearch(num, page, word), new Callback<WXHttpResponse<List<WXItemBean>>>() {
+        invoke(mWeChatService.fetchWXHotSearch(AppConstants.KEY_API,num, page, word), new Callback<WXHttpResponse<List<WXItemBean>>>() {
             @Override
             public void onResponse(WXHttpResponse<List<WXItemBean>> data) {
                 List<WXItemBean> newslist = data.getNewslist();

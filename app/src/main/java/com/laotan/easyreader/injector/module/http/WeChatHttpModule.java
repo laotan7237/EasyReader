@@ -2,7 +2,6 @@ package com.laotan.easyreader.injector.module.http;
 
 import com.laotan.easyreader.injector.qualifier.WeChatUrl;
 import com.laotan.easyreader.http.service.WeChatService;
-import com.laotan.easyreader.http.utils.RetrofitWeChatUtils;
 
 import javax.inject.Singleton;
 
@@ -28,9 +27,5 @@ public class WeChatHttpModule extends BaseHttpModule {
     WeChatService provideWeChatService(@WeChatUrl Retrofit retrofit) {
         return retrofit.create(WeChatService.class);
     }
-    @Provides
-    @Singleton
-    RetrofitWeChatUtils provideRetrofitWeChatUtils(WeChatService weChatService) {
-        return new RetrofitWeChatUtils(weChatService);
-    }
+
 }

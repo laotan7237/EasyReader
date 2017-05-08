@@ -16,15 +16,15 @@ public interface TopNewsService {
     String API_TOPNEWS = "http://c.m.163.com/nc/article/";
 
     @GET("headline/T1348647909107/{id}-20.html")
-    Observable<NewsListBean> getNews(@Path("id") int id);
+    Observable<NewsListBean> fetchNews(@Path("id") int id);
 
     //   http://c.m.163.com/nc/article/list/T1348649145984/0-20.html
     @GET("list/T1348649145984/{id}-20.html")
-    Observable<NBAListBean> getNBA(@Path("id") int id);
+    Observable<NBAListBean> fetchNBA(@Path("id") int id);
 
     //    http://c.m.163.com/nc/article/CHTLBV3C0005877U/full.html
     @GET("{postId}/full.html")
-    Observable<NBADetailBean> getNewDetail(
+    Observable<NBADetailBean> fetchNewDetail(
             @Path("postId") String postId);
 
 }

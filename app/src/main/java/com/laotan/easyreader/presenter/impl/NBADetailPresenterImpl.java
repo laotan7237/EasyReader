@@ -3,7 +3,7 @@ package com.laotan.easyreader.presenter.impl;
 import com.laotan.easyreader.app.AppConstants;
 import com.laotan.easyreader.bean.topnews.NewsDetailBean;
 import com.laotan.easyreader.http.Stateful;
-import com.laotan.easyreader.http.utils.RetrofitTopNewsUtils;
+import com.laotan.easyreader.http.service.TopNewsService;
 import com.laotan.easyreader.presenter.BasePresenter;
 import com.laotan.easyreader.presenter.NBADetailPresenter;
 import com.laotan.easyreader.utils.NewsJsonUtils;
@@ -16,11 +16,11 @@ import javax.inject.Inject;
  */
 
 public class NBADetailPresenterImpl extends BasePresenter<NBADetailPresenter.View> implements NBADetailPresenter.Presenter {
-    private RetrofitTopNewsUtils mRetrofitTopNewsUtils;
+    private TopNewsService mTopNewsService;
 
     @Inject
-    public NBADetailPresenterImpl(RetrofitTopNewsUtils mRetrofitTopNewsUtils) {
-        this.mRetrofitTopNewsUtils = mRetrofitTopNewsUtils;
+    public NBADetailPresenterImpl(TopNewsService mTopNewsService) {
+        this.mTopNewsService = mTopNewsService;
     }
     @Override
     public void fetchNBADetail(final String id) {

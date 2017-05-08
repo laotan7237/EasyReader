@@ -6,7 +6,6 @@ import com.blankj.utilcode.utils.Utils;
 import com.laotan.easyreader.injector.component.AppComponent;
 import com.laotan.easyreader.injector.component.DaggerAppComponent;
 import com.laotan.easyreader.injector.module.AppModule;
-import com.laotan.easyreader.injector.module.http.TopNewsHttpModule;
 
 
 /**
@@ -29,7 +28,6 @@ public class App extends Application{
         if (appComponent == null) {
             appComponent = DaggerAppComponent.builder()
                     .appModule(new AppModule(instance))
-                    .topNewsHttpModule(new TopNewsHttpModule())
                     .build();
         }
         return appComponent;

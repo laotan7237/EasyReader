@@ -18,7 +18,7 @@ public interface DoubanService {
      * 豆瓣热映电影，每日更新
      */
     @GET("v2/movie/in_theaters")
-    Observable<HotMovieBean> getHotMovie();
+    Observable<HotMovieBean> fetchHotMovie();
 
     /**
      * 获取电影详情
@@ -26,7 +26,7 @@ public interface DoubanService {
      * @param id 电影bean里的id
      */
     @GET("v2/movie/subject/{id}")
-    Observable<MovieDetailBean> getMovieDetail(@Path("id") String id);
+    Observable<MovieDetailBean> fetchMovieDetail(@Path("id") String id);
 
     /**
      * 获取豆瓣电影top250
@@ -35,5 +35,5 @@ public interface DoubanService {
      * @param count 一次请求的数目，如"10"条，最多100
      */
     @GET("v2/movie/top250")
-    Observable<HotMovieBean> getMovieTop250(@Query("start") int start, @Query("count") int count);
+    Observable<HotMovieBean> fetchMovieTop250(@Query("start") int start, @Query("count") int count);
 }
