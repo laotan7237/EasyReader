@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -69,12 +68,12 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.fl_feedback)
     public void feedback() {
-        startActivity(new Intent(this,FeedbackActivity.class));
+        startActivity(new Intent(this, FeedbackActivity.class));
     }
 
     @OnClick(R.id.fl_about_us)
     public void aboutUs() {
-        startActivity(new Intent(this,AboutUsActivity.class));
+        startActivity(new Intent(this, AboutUsActivity.class));
     }
 
     @OnClick(R.id.fl_setting)
@@ -96,10 +95,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        setSupportActionBar(tbToolbar);
-        ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setDisplayHomeAsUpEnabled(false);//不显示返回键
-        supportActionBar.setDisplayShowTitleEnabled(false);//去除默认标题
+        setToolBar(tbToolbar, "", false);
         initView();
         //初始化首页栏目顺序
         SPUtils spUtils = new SPUtils("home_list");
@@ -218,6 +214,7 @@ public class MainActivity extends BaseActivity {
 
     /**
      * 按返回键不退出应用。
+     *
      * @param keyCode
      * @param event
      * @return
@@ -235,6 +232,7 @@ public class MainActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {

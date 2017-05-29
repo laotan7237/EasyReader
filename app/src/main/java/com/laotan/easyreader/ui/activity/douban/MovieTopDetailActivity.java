@@ -156,7 +156,7 @@ public class MovieTopDetailActivity extends LoadingBaseActivity<DoubanMovieDetai
         toolbarDoubanDetail.setTitleTextAppearance(this, R.style.ToolBar_Title);
         toolbarDoubanDetail.setSubtitleTextAppearance(this, R.style.Toolbar_SubTitle);
         toolbarDoubanDetail.inflateMenu(R.menu.base_header_menu);
-        toolbarDoubanDetail.setOverflowIcon(getDrawable(R.mipmap.actionbar_more));
+        toolbarDoubanDetail.setOverflowIcon(getResources().getDrawable(R.mipmap.actionbar_more));
         toolbarDoubanDetail.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

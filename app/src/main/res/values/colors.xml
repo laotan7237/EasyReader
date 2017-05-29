@@ -53,7 +53,7 @@
 
     <!--item的分割线-->
     <color name="colorLineItem">#FFDDDDDD</color>
-    
+
     <color name="colorLatestRead">#ff9d00</color>
 
 
@@ -61,4 +61,6 @@
     <color name="colorPrimaryDarkTheme">#ff343a49</color>
     <color name="colorPrimaryDarkDarkTheme">#ff2a2e3a</color>
     <color name="colorAccentDarkTheme">#ffffffff</color>
+    <color name="colortest">#FF4D8DFF</color>
+    <color name="colortest1">#FF37B7FB</color>
 </resources>

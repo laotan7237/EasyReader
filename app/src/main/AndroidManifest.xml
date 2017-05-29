@@ -37,11 +37,11 @@
         <activity
             android:name=".ui.activity.main.FeedbackActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/windowTranslucentMovieTop" />
+            android:theme="@style/HalfTranslucent" />
         <activity
             android:name=".ui.activity.main.AboutUsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/windowTranslucentMovieTop" />
+            android:theme="@style/HalfTranslucent" />
         <activity
             android:name=".ui.activity.zhihu.ZhiHuCommentActivity"
             android:screenOrientation="portrait"

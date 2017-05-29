@@ -50,7 +50,7 @@ public class FeedbackActivity extends ToolbarBaseActivity {
 
     @Override
     protected void initUI() {
-        setToolBar(toolbarBaseActivity, "意见反馈");
+        tvToolbarTitle.setText("意见反馈");
     }
 
     /**

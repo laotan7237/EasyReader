@@ -19,7 +19,7 @@ public class AboutUsActivity extends ToolbarBaseActivity {
 
     @Override
     protected void initUI() {
-        setToolBar(toolbarBaseActivity, "关于易读");
+        tvToolbarTitle.setText("关于易读");
     }
 
     @Override

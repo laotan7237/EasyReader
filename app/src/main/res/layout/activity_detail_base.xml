@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     >
     <!--大家在看这个效果之前一定要看下面这个链接，看完了基本就明白怎么用的了
     windows按住ctrl+鼠标左键点击下面链接 mac菊花++鼠标左键点击下面链接-->
@@ -11,9 +10,9 @@
     <!--http://www.jianshu.com/p/06c0ae8d9a96 -->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
         android:transitionName="@string/zhihu_detail_title">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -64,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                android:fitsSystemWindows="true"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
             <!--                app:layout_collapseMode="pin"
             这个属性可以让toolbar留在屏幕，替代整个CollapsingToolbarLayout-->
