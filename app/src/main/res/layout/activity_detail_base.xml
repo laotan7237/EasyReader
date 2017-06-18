@@ -63,7 +63,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                android:fitsSystemWindows="true"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
             <!--                app:layout_collapseMode="pin"
             这个属性可以让toolbar留在屏幕，替代整个CollapsingToolbarLayout-->

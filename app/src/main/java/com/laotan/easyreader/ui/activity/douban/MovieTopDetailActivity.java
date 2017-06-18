@@ -51,6 +51,7 @@ public class MovieTopDetailActivity extends LoadingBaseActivity<DoubanMovieDetai
     private HotMovieBean.SubjectsBean subjectsBean;
     private String id;
 
+
     @BindView(R.id.nsv_movie_top_detail)
     NestedScrollView nsvMovieTopDetail;
 

@@ -32,7 +32,7 @@ public class MovieLatestAdapter extends BaseQuickAdapter<HotMovieBean.SubjectsBe
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickListener.onItemClickListener(item,(ImageView) helper.getView(R.id.iv_one_photo));
+                onItemClickListener.onItemClickListener(item, helper.getView(R.id.iv_one_photo));
             }
         });
     }
